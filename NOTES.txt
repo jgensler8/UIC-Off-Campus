@@ -1,0 +1,15 @@
+create : .
+   create : ./package.json
+   create : ./app.js
+   create : ./public
+   create : ./public/javascripts
+   create : ./public/images
+   create : ./public/stylesheets
+   create : ./public/stylesheets/style.css
+   create : ./views
+   create : ./views/layout.jade
+   create : ./views/index.jade
+   create : ./routes
+   create : ./routes/index.js
+   create : ./routes/user.js
+
