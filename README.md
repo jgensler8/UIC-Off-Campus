@@ -8,11 +8,16 @@ New UIC off campus housing website.
   node app.js
   ```
 
-*   Code built with the help of:
+##Code built with the help of##
 *   Node.js, backend framework
 *   Foundation, boilerplate CSS + Widgets
 *   Express.js, middleware
-*   Hogan.js, templating
+*   express3-handlebars.js, templating
 *   Mongoose, connect to MonogoLab Database
-*   Optimist, internal parameter passing used by UIC internal hosting manager
 *   Google Maps API, the maps
+##In the works:##
+*   Optimist, internal parameter passing used by UIC internal hosting manager
+*   Passport, authentication for non-uic people
+*   UIC bluestem, authentication for uic students
+
+*   underscore.js, might use for minor aggregation

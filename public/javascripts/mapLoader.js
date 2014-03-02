@@ -6,5 +6,21 @@ var mapOptions = {
 
 function initMap() {
   var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+  var marker = new google.maps.Marker({
+    position: map.getCenter(),
+    map: map,
+    title: 'click to load data',
+    id: 2308
+  });
+
+  //var markers[];
+  //$.ajax("/map/" 
+
+  google.maps.event.addListener( marker, 'click', function(){
+    $.ajax("/map/" + marker.id).done(function(data){
+      console.log(data);
+      document.getElementById("DATA").placeholder = data.name;
+    });
+  });
 }
 google.maps.event.addDomListener(window, 'load', initMap);
