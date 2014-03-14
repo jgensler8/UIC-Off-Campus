@@ -1,17 +1,12 @@
-var express = require('express'),
-    exphbs  = require('express3-handlebars'),
-    app = express(),
-    routes = require('./routes'),
-    path = require('path');
+var restify = require("restify");
+var server = restify.createServer();
 
-app.engine('handlebars', exphbs() );
-app.set('view engine', 'handlebars');
+var respond = function( req, res, next){
+	res.send("hello");
+}
 
-app.get('/', routes.index);
-app.get('/about', routes.about);
-app.get('/map', routes.map);
-app.get('/map/:id', routes.mapGetId);
-//app.get('/help', routes.help);
-app.use(express.static(path.join(__dirname, '/public')));
+server.get('/', respond);
 
-app.listen(3000);
+server.listen( 8000, function(){
+	console.log("got a visitor");
+});
