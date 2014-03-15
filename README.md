@@ -4,16 +4,20 @@ UIC-Off-Campus
 New UIC off campus housing website.
 
 #How to run#
-create a mongoDB and edit routes/index.js. Edit lines accordingly:
-  ```
-var mongoose = require('mongoose');
-var mongolab = require('./.mongolab.json');
-mongoose.connect('mongodb://' + mongolab.username + ':' + mongolab.pass + '@ds037737.mongolab.com:37737/listings'); 
-  ```
-then run,
-  ```
-  node app.js
-  ```
+create back end deps (assuming you have npm):
+```
+npm install
+```
+
+create front end deps (assuming you have bower $):
+```
+bower install
+```
+
+start the server
+```
+node server.js
+```
 
 ##Back end built with the help of:##
 *   Node.js
@@ -32,3 +36,8 @@ then run,
 *   Passport, authentication for non-uic people
 *   UIC bluestem, authentication for uic students
 
+
+# $ to fix #
+```
+npm install -g bower
+```
