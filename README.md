@@ -15,16 +15,20 @@ then run,
   node app.js
   ```
 
-##Code built with the help of##
-*   Node.js, backend framework
-*   Foundation, boilerplate CSS + Widgets
-*   Express.js, middleware
-*   express3-handlebars.js, templating
-*   Mongoose, connect to MonogoLab Database
-*   Google Maps API, the maps
+##Back end built with the help of:##
+*   Node.js
+*   Restify
+*   Mongoose
+
+##Front end build with the help of:##
+*   Bower
+*   Backbone
+*   Require.js
+*   Foundation
+*   Google Maps API
 
 ##In the works:##
 *   Optimist, internal parameter passing used by UIC internal hosting manager
 *   Passport, authentication for non-uic people
 *   UIC bluestem, authentication for uic students
-*   underscore.js, might use for minor aggregation
+

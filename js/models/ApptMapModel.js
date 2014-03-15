@@ -1,4 +1,9 @@
-(
+define([
+  'jquery',
+  'underscore',
+  'Backbone',
+  'gmaps'
+  ], function( $, _, Backbone, gmaps){
   var ApptMapModel = Backbone.Model.ApptModel({
     defaults: {
       zoom: 16,
@@ -9,17 +14,17 @@
 
       mapOptions: {},
       map: {}
-    }
+    },
     initialize: function(lat, lol){
       console.log("created a appt model");
-      var currentLatLng = new google.maps.LatLng( this.get('lat'), this.get('lon'));
-      this.set('currentLatLng', currentLatLng);
+
+      var currentLatLng = new gmaps.LatLng( this.get('lat'), this.get('lon'));
       var mapOptions = {
         zoom: this.get('zoom'),
         scaleControl: this.get('scaleControl'),
         center = currentLatLng
       }
       this.set('mapOptions', mapOptions);
-  });
-
- )()
+  }
+  return ApptMapModel;
+});

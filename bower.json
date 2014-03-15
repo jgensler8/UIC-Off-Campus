@@ -1,0 +1,22 @@
+{
+  "name": "UIC-Off-Campus",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jgensler8/UIC-Off-Campus",
+  "authors": [
+    "Jeff Gensler"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": null,
+    "backbone-amd": null,
+    "foundation": null,
+    "requirejs": null
+  }
+}
