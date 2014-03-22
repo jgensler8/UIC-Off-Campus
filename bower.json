@@ -17,6 +17,7 @@
     "lodash": null,
     "backbone-amd": null,
     "foundation": null,
-    "requirejs": null
+    "requirejs": null,
+    "requirejs-plugins": "~1.0.2"
   }
 }

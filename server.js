@@ -20,6 +20,9 @@ server.get('modernizr.js', restify.serveStatic({
 server.get('require.js', restify.serveStatic({
   'directory': './bower_components/requirejs/'
 }));
+server.get('async.js', restify.serveStatic({
+  'directory': './bower_components/requirejs-plugins/src/'
+}));
 server.get('backbone.js', restify.serveStatic({
   'directory': './bower_components/backbone-amd/'
 }));
@@ -44,7 +47,9 @@ server.get('gmaps.js', restify.serveStatic({
   'directory': './js/'
 }));
 //front end user models
-
+server.get('ApptMapModel.js', restify.serveStatic({
+  'directory': './js/models/'
+}));
 //front end user views
 server.get('ApptMapView.js', restify.serveStatic({
   'directory': './js/views/'

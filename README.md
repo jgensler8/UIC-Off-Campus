@@ -9,19 +9,19 @@ create back end deps (assuming you have npm):
 npm install
 ```
 
-create front end deps (assuming you have bower $):
+create front end deps (assuming you have bower, see below):
 ```
 bower install
 ```
 
-start the server
+start the server:
 ```
 node server.js
 ```
 
 ##Back end built with the help of:##
 *   Node.js
-*   Restify
+*   Express
 *   Mongoose
 
 ##Front end build with the help of:##
@@ -37,7 +37,7 @@ node server.js
 *   UIC bluestem, authentication for uic students
 
 
-# $ to fix #
+to get bower:
 ```
 npm install -g bower
 ```

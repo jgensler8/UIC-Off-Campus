@@ -3,8 +3,7 @@ require.config({
     jquery: 'jquery',
     underscore: 'lodash',
     Backbone: 'backbone',
-    app: 'app',
-    router: 'router'
+    app: 'app'
   }
 });
 

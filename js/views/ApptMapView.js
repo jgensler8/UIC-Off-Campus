@@ -2,23 +2,20 @@ define([
   'jquery',
   'underscore',
   'Backbone',
-  'gmaps'
+  'gmaps',
   ],
 function( $, _, Backbone, gmaps){
   var ApptMapView = Backbone.View.extend({
-    defaults:{
-      lat: 41.871850,
-      lon: -87.649250
-    },
     el: '#ApptMap',
     initialize: function(){
       var map;
-      this.model.set('map', gmaps.Map( this.el, this.model.get('mapOptions')));
-      //this.render();
+      this.model.set('map', new gmaps.Map( this.el, this.model.get('mapOptions')));
     },
     render: function(){
-      this.$el
-      return this;
+      return this.model.map;
+    },
+    refresh: function(){
+      gmaps.event.trigger( this.model.map, 'resize');
     }
   });
   return ApptMapView;

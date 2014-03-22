@@ -1,13 +1,13 @@
 {
-  "name": "uic-social-living",
+  "name": "application-name",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
-    "mongoose": "^3.8.8",
-    "optimist": "^0.6.1",
-    "restify": "^2.6.3"
+    "express": "3.5.0",
+    "jade": "*",
+    "mongoose": "^3.8.8"
   }
 }
