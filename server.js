@@ -1,61 +1,28 @@
-var restify = require('restify');
-var server = restify.createServer();
 
-//static front end "template"
-server.get('/', restify.serveStatic({
-  'directory': './templates/',
-  'default': 'index.html'
-}));
+/**
+ * Module dependencies.
+ */
 
-// front end vendor
-server.get('foundation.css', restify.serveStatic({
-  'directory': './bower_components/foundation/css/'
-}));
-server.get('foundation.js', restify.serveStatic({
-  'directory': './bower_components/foundation/js/'
-}));
-server.get('modernizr.js', restify.serveStatic({
-  'directory': './bower_components/foundation/js/vendor/'
-}));
-server.get('require.js', restify.serveStatic({
-  'directory': './bower_components/requirejs/'
-}));
-server.get('async.js', restify.serveStatic({
-  'directory': './bower_components/requirejs-plugins/src/'
-}));
-server.get('backbone.js', restify.serveStatic({
-  'directory': './bower_components/backbone-amd/'
-}));
-server.get('jquery.js', restify.serveStatic({
-  'directory': './bower_components/jquery/dist/'
-}));
-server.get('lodash.js', restify.serveStatic({
-  'directory': './bower_components/lodash/dist/'
-}));
-// front end user basic
-server.get('router.js', restify.serveStatic({
-  'directory': './js/'
-}));
-server.get('main.js', restify.serveStatic({
-  'directory': './js/'
-}));
-server.get('app.js', restify.serveStatic({
-  'directory': './js/'
-}));
-//front end user other
-server.get('gmaps.js', restify.serveStatic({
-  'directory': './js/'
-}));
-//front end user models
-server.get('ApptMapModel.js', restify.serveStatic({
-  'directory': './js/models/'
-}));
-//front end user views
-server.get('ApptMapView.js', restify.serveStatic({
-  'directory': './js/views/'
-}));
+var express = require('express');
+var http = require('http');
+var path = require('path');
 
-//start the server
-server.listen( 8000, function(){
-	console.log("listening");
+var app = express();
+
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.use(express.logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded());
+app.use(express.methodOverride());
+app.use(app.router);
+
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
+app.get('/', function(req, res){
+  res.sendfile( path.join(__dirname, 'public') + '/index.html');
+});
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
 });

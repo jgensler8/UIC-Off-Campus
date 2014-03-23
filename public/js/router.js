@@ -2,8 +2,8 @@ define([
   'jquery',
   'underscore',
   'Backbone',
-  'ApptMapView',
-  'ApptMapModel',
+  './views/ApptMapView',
+  './models/ApptMapModel',
   ],
 function( $, _, Backbone, ApptMapView, ApptMapModel){
   var AppRouter = Backbone.Router.extend({
