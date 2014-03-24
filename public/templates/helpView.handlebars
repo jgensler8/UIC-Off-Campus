@@ -1,0 +1,15 @@
+<div class="panel callout radius">
+  <p>{{title}}</p>
+
+  <p>{{howTo.title}}<br>
+  {{#each howTo.howTos}}
+  <span data-tooltip class="has-tip" title="{{response}}">{{title}}</span><br>
+  {{/each}}
+  </p>
+
+  <p>{{faq.title}}<br>
+  {{#each faq.faqs}}
+  <span data-tooltip class="has-tip" title="{{response}}">{{title}}</span><br>
+  {{/each}}
+  </p>
+</div>

@@ -7,27 +7,25 @@ var AppRouter = Backbone.Router.extend({
   },
 
   initialize: function(){
-    var mapModel = new ApptMapModel();
-    var mapViewContent = $( mapView.el );
+    //this.mapModel = new ApptMapModel();
+    //this.mapView = new ApptMapView({ 'model': this.mapModel });
+    this.aboutView = new AboutView();
+    this.helpView = new HelpView();
   },
 
   showAbout: function(){
-    console.log("SHOWING ABOUT")
-    var aboutView = new AboutView( { 'text': "Welcome to UIC Social Living!" } );
-    $('About').html(aboutView.render().el);
-    mapContent.hide();
+    $('#app').html(this.aboutView.render().el);
   },
 
   showAccount: function(){
   },
 
   showHelp: function(){
+    $('#app').html(this.helpView.render().el);
   },
 
   showMap: function(){
-    var mapView = new ApptMapView( { 'model': mapModel } );
-    //mapContent.show();
-    //mapView.refresh();
+    //$('#app').html(this.mapView.render().el);
   },
 });
 
@@ -35,5 +33,4 @@ var app = new AppRouter();
 
 $(function(){
   Backbone.history.start();
-  app.AppRouter.navigate("#", {trigger: true} );
 })

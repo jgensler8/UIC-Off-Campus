@@ -1,0 +1,14 @@
+<div class="panel callout radius text-center">
+  <p>{{title}}</p>
+  {{#each paragraphs}}<p>{{text}}</p>{{/each}}
+  <p>
+    <ul class="vcard">
+      <li class="fn">{{card.name}}</li>
+      <li class="street-address">{{card.address.street}}</li>
+      <li class="locality">{{card.address.city}}</li>
+      <li><span class="state">{{card.address.state}}</span>, <span class="zip">{{card.address.zip}}</span></li>
+      <li class="email"><a href="#">{{card.email}}</a></li>
+      <li class="fn">{{card.phone}}</li>
+    </ul>
+  </p>
+</div>
