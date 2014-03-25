@@ -1,6 +1,6 @@
-var mongoose = require('mongoose;);
+var mongoose = require('mongoose');
 
-exports.listing = mogoose.model('appt_listing', new Schema({
+exports.listing = mongoose.model('appt_listing', new Schema({
   listingID: Number,
   listingType: Number,
   postedByID: Number,
