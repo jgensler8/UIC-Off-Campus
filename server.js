@@ -1,6 +1,8 @@
+#!/usr/bin/env node
 /**
  * Module dependencies.
  */
+var argv = require('optimist').argv;
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -36,7 +38,7 @@ passport.use(
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', argv.port || 3000);
 app.set('view engine', 'hbs');
 app.use(express.logger('dev'));
 app.use(express.json());

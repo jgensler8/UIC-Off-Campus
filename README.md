@@ -4,31 +4,40 @@ UIC-Off-Campus
 New UIC off campus housing website.
 
 #How to run#
-create back end deps (assuming you have npm):
+Create back end deps (assuming you have npm):
 ```
 $ npm install
 ```
 
-create front end deps (bower must be installed globally)
+Create front end deps (bower must be installed globally)
 ```
 $ bower install
 ```
 
-precompile the templates (handlebars 1.3 must be installed globally)
+Precompile the templates (handlebars 1.3 must be installed globally)
 ```
 $ . build_templates.sh
 ```
 
-start the server:
+Add a 'facebook_options.json' file in the root directory. You will need 
 ```
-$ node server.js
+{
+  "appId": "ID_GOES_HERE",
+  "appSecret": "SECRET_GOES_HERE"
+}
+```
+
+Start the server:
+```
+$ node server.js [--port=[CHOOSE A PORT]]
 ```
 
 ##Back end built with the help of:##
 *   Node.js
 *   hbs
 *   Express
-*   Mongoose
+*   Optimist
+*   passport, passport-facebook, passport-local
 
 ##Front end build with the help of:##
 *   Bower
@@ -38,7 +47,5 @@ $ node server.js
 *   Google Maps API
 
 ##In the works:##
-*   Optimist, internal parameter passing used by UIC internal hosting manager
-*   Passport, authentication for non-uic people
 *   UIC bluestem, authentication for uic students
 
