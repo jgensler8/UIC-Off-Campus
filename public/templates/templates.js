@@ -83,15 +83,15 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"row\">\n  <div class=\"small-2 large-4 columns\">\n    <a class=\"th [radius]\" href=\"#\">\n      <img src=\"";
-  if (helper = helpers.profilePictureLink) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.profilePictureLink); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += "<div class=\"row\">\n  <div class=\"small-2 large-4 columns\">\n    <a class=\"th [radius]\" href=\"#\">\n      <img src=\"http://graph.facebook.com/";
+  if (helper = helpers.username) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.username); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\">\n    </a>\n  </div>\n  <div class=\"small-4 large-4 columns\">\n    ";
-  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+    + "/picture\">\n    </a>\n  </div>\n  <div class=\"small-4 large-4 columns\">\n    ";
+  if (helper = helpers.displayName) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.displayName); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "qqthe name would be here\n  </div>\n</div>";
+    + "\n  </div>\n</div>";
   return buffer;
   });
 templates['loginView'] = template(function (Handlebars,depth0,helpers,partials,data) {
@@ -114,10 +114,10 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  buffer += "<div class=\"row\">\n  <div class=\"small-4 large-4\">text</div>\n  <div class=\"small-8 large-4 text-center\">\n    <ul class=\"button-group\">\n      ";
+  buffer += "<div class=\"row\">\n  <div class=\"small-4 large-4\"></div>\n  <div class=\"small-8 large-4 text-center\">\n    <ul class=\"button-group\">\n      ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.buttons), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n    </ul>\n  </div>\n</div>";
+  buffer += "\n    </ul>\n  </div>\n</div>\n";
   return buffer;
   });
 })();

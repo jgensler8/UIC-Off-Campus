@@ -13,7 +13,8 @@ var AppRouter = Backbone.Router.extend({
     this.aboutView = new AboutView();
     this.loginView = new LoginView();
     this.helpView = new HelpView();
-    this.accountView = new AccountView();
+    this.accountModel = new AccountModel();
+    this.accountView = new AccountView({ 'model': this.accountModel });
   },
 
   showAbout: function(){
@@ -25,9 +26,14 @@ var AppRouter = Backbone.Router.extend({
   },
 
   showAccount: function(){
-    this.accountModel = new AccountModel({name:'jedd'});
-    this.accountView = new AccountView( {model: this.accountModel} );
-    $('#app').html(this.accountView.render().el);
+    this.accountModel.checkAuth({
+      success: function(data, res){
+        $('#app').html(app.accountView.render().el);
+      },
+      error: function(data, res){
+        app.navigate('login', {trigger: true});
+      }
+    })
   },
 
   showHelp: function(){
@@ -37,6 +43,7 @@ var AppRouter = Backbone.Router.extend({
   showMap: function(){
     //$('#app').html(this.mapView.render().el);
   },
+
 });
 
 var app = new AppRouter();

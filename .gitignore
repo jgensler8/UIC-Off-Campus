@@ -1,3 +1,5 @@
 node_modules/*
 public/bower_components/*
 facebook_options.json
+monogolab_options.json
+*.db
