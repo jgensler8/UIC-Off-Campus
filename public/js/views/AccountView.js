@@ -7,6 +7,6 @@ var AccountView = Backbone.View.extend({
     'change': this.attributesChanged
   },
   attributesChanged: function(){
-
+    //TODO maybe?
   }
 });

@@ -120,4 +120,75 @@ function program1(depth0,data) {
   buffer += "\n    </ul>\n  </div>\n</div>\n";
   return buffer;
   });
+templates['mapView'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div class=\"panel\" style=\"height:400px\" id=\"";
+  if (helper = helpers.id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\"></div>";
+  return buffer;
+  });
+templates['searchView'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  if (helper = helpers.mapViewTemplate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.mapViewTemplate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n\n<div class=\"row\">\n  <div class=\"small-12 large-6 columns\">\n    <div class=\"panel\">\n      <div class=\"button\">select me</div>\n    </div>\n  </div>\n  <div class=\"small-12 large-6 columns\">\n    <div class=\"panel\" id=";
+  if (helper = helpers.resultsID) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.resultsID); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + ">\n    results will go here\n    </div>\n  </div>\n</div>";
+  return buffer;
+  });
+templates['listingViewForm'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<div class=\"panel\">\n  <div class=\"row\">\n    <form class=\"small-12 large-4 columns\">\n      <fieldset>\n        <legend>Select Listing Type</legend>\n        <div class=\"row\">\n          <div class=\"large-12 columns\">\n            <label>I'm trying to:\n              <select id=\"listType\">\n                <option value=\"1\">lease a whole Appt</option>\n                <option value=\"2\">sub lease a room, for the long term (yearly)</option>\n                <option value=\"3\">sub lease a room, for the short term (a few months)</option>\n                <option value=\"51\">find a whole Appt</option>\n                <option value=\"52\">find a room in the long term (yearly)</option>\n                <option value=\"53\">find a room in the short term (a few months)</option>\n              </select>\n            </label>\n            <span data-tooltip class=\"has-tip\" title=\"A yearly commitment\">Long term?</span><br>\n            <span data-tooltip class=\"has-tip\" title=\"1 to 3 months or more\">Short term?</span><br>\n          </div>\n        </div>\n      </fieldset>\n    </form>\n    <form class=\"small-12 large-8 columns\">\n      <fieldset>\n        <legend>Select Criteria</legend>\n        <div class=\"row\">\n          <div class=\"large-12 columns\">\n            <label>I'm trying to:\n              <select>\n                <option value=\"1\">lease a whole Appt</option>\n                <option value=\"2\">sub lease a room, for the long term (yearly)</option>\n                <option value=\"3\">sub lease a room, for the short term (a few months)</option>\n                <option value=\"51\">find a whole Appt</option>\n                <option value=\"52\">find a room in the long term (yearly)</option>\n                <option value=\"53\">find a room in the short term (a few months)</option>\n              </select>\n            </label>\n          </div>\n        </div>\n      </fieldset>\n    </form>\n  </div>\n</div>\n\n<script>$('#listType').on('change', function(){\n  console.log(\"CHANGED THE OPTIONS\");\n});</script>";
+  });
+templates['listingViewComplete'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "<label>";
+  if (helper = helpers.text) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.text); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</label><br>";
+  return buffer;
+  }
+
+  buffer += "<form>\n  <fieldset>\n    <legend>";
+  if (helper = helpers.lengendTitle) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.lengendTitle); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "/legend>\n    ";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.criteria), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n  </fieldset>\n</form>";
+  return buffer;
+  });
+templates['listingViewSmall'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "SMALL LISTING VIEW TODO";
+  });
 })();

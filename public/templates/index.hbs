@@ -9,11 +9,17 @@
     <script src="public/bower_components/underscore/underscore.js"></script>
     <script src="public/bower_components/backbone/backbone.js"></script>
     <script src="public/bower_components/handlebars/handlebars.runtime.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm7NgnT4npV8uqF4ojhgK7RXd8X2hOIYE&sensor=false"></script>
     <script src="public/templates/templates.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm7NgnT4npV8uqF4ojhgK7RXd8X2hOIYE&sensor=false"></script>
 
-    <script src="public/js/models/ApptMapModel.js"></script>
-    <script src="public/js/views/ApptMapView.js"></script>
+    <script src="public/js/models/MapModel.js"></script>
+    <script src="public/js/views/MapView.js"></script>
+    <script src="public/js/models/ListingModel.js"></script>
+    <script src="public/js/views/ListingView.js"></script>
+    <script src="public/js/collections/ListingCollection.js"></script>
+    <script src="public/js/models/SearchModel.js"></script>
+    <script src="public/js/views/SearchView.js"></script>
+
     <script src="public/js/models/AccountModel.js"></script>
     <script src="public/js/views/AccountView.js"></script>
     <script src="public/js/views/LoginView.js"></script>
@@ -33,8 +39,10 @@
     <section class="top-bar-section">
       <ul class="right">
         <li class="has-dropdown">
-          <a href="#">Options</a>
+          <a href="#">Menu</a>
           <ul class="dropdown">
+            <li><a href="#search">Search</a></li>
+            <li><a href="#create">Create</a></li>
             <li><a href="#account">Account</a></li>
             <li><a href="#help">Help</a></li>
             <li><a href="#about">About</a></li>
@@ -55,6 +63,8 @@
     </ul>
   </div>
   <script src="public/bower_components/foundation/js/foundation.js"></script>
+  <script src="public/bower_components/foundation/js/foundation/foundation.abide.js"></script>
+  <script src="public/bower_components/foundation/js/foundation/foundation.tooltip.js"></script>
   <script>$(document).foundation()</script>
   </body>
 </html>

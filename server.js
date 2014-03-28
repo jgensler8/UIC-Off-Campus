@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 /**
  * Module dependencies.
  */
@@ -6,72 +7,19 @@ var argv = require('optimist').argv;
 var express = require('express');
 var http = require('http');
 var path = require('path');
+//authentication
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var FacebookOptions = require('./facebook_options.json');
-var sqlite3 = require('sqlite3').verbose();
+//database
+var mongoose = require('mongoose');
+var mongooseOptions = require('./mongolab_options.json');
+var listingSchema = require('./schemas/listingSchema.js').listing;
+var accountSchema = require('./schemas/accountSchema.js').account;
 
-//setup the users database
-var db_users = new sqlite3.Database("users.db");
-var userTable = "users";
-var userSchema = "("
-  + "netid TEXT PRIMARY KEY,"
-  + "first_name TEXT NOT NULL,"
-  + "last_name TEXT NOT NULL,"
-  + "facebook_id TEXT"
-  + ")";
-db_users.run("CREATE TABLE IF NOT EXISTS " + userTable + " " + userSchema);
-
-var userTest = {
-  firstName: "Jeff",
-  lastName: "Gensler",
-  netid: "jgensl2",
-  facebook_id: "null"
-}
-
-db_users.run("INSERT OR IGNORE INTO " + userTable + " VALUES (" 
-  + "\"" + userTest.netid + "\","
-  + "\"" + userTest.firstName + "\"," 
-  + "\"" + userTest.lastName + "\"," 
-  + "\"" + userTest.facebook_id + "\"" 
-  + ")" );
-
-//setup the users database
-var db_listings = new sqlite3.Database("listings.db");
-var listingTable = "listings";
-var listingSchema = "("
-  + "netid TEXT FOREIGN KEY,"
-  + "listingID TEXT PRIMARY KEY,"
-  + "listingType TEXT NOT NULL,"
-  + "facebook_id TEXT,"
-  + "postDate TEXT,"
-  + "expireDate TEXT,"
-  + "facebook_id TEXT,"
-  + "facebook_id TEXT,"
-  + "facebook_id TEXT,"
-  + "facebook_id TEXT,"
-  + "facebook_id TEXT,"
-  + "facebook_id TEXT,"
-  + "facebook_id TEXT,"
-  + "facebook_id TEXT,"
-  + "facebook_id TEXT,"
-  + "facebook_id TEXT,"
-  + ")";
-db_litings.run("CREATE TABLE IF NOT EXISTS " + listingTable + " " + listingSchema);
-
-var userTest = {
-  firstName: "Jeff",
-  lastName: "Gensler",
-  netid: "jgensl2",
-  facebook_id: "null"
-}
-
-db_listings.run("INSERT OR IGNORE INTO " + userTable + " VALUES (" 
-  + "\"" + userTest.netid + "\","
-  + "\"" + userTest.firstName + "\"," 
-  + "\"" + userTest.lastName + "\"," 
-  + "\"" + userTest.facebook_id + "\"" 
-  + ")" );
+//connect to the database
+mongoose.connect('mongodb://'+mongooseOptions.username+":"
+  +mongooseOptions.userpass+"@ds045907.mongolab.com:45907/offcampus");
 
 //facebook authentication
 passport.serializeUser(function(user, done) {
@@ -87,12 +35,13 @@ passport.use(
     callbackURL: 'http://localhost:3000/auth/facebook/callback'
   },
   function(accessToken, refreshToken, profile, done){
-    db_users.run("INSERT OR IGNORE INTO " + userTable + " VALUES ("
-      + "\"" + profile.username + "\"," 
-      + "\"" + profile.first_name + "\"," 
-      + "\"" + profile.last_name + "\"," 
-      + "\"" + profile.id + "\"" 
-      +")");
+    var toAdd = new accountSchema({
+      netid: profile.username,
+      firstName: profile.name.familyName,
+      lastName: profile.name.givenName,
+      facebookid: profile.username
+    });
+    toAdd.save(function(err){ if(err) console.log('ERROR SAVING A RECORD (can be from duplicates'); });
     process.nextTick(function(){
       return done(null, profile);
     });
@@ -124,6 +73,7 @@ app.get('/', function(req, res){
   res.render( path.join(__dirname, 'public') + '/templates/index.hbs');
 });
 
+/// account routes
 //facebook routes
 app.get('/auth/facebook',
   passport.authenticate('facebook'),
@@ -147,7 +97,30 @@ function ensureAuthenticated(req, res, next){
 app.get('/account*', ensureAuthenticated, function(req,res){
   res.json( req.user);
 });
-//will need more CRUD endpoints
+//will need more CRUD endpoints... maybe
+
+/// listing routes
+app.get('/listing/all', function(req, res, next){
+  //listing.find('*');
+  res.json({result: 'something'});
+});
+
+app.post('/listing/:id', function(req,res,next){
+  //not really sure what to do here yet
+  //create
+});
+app.get('/listing/:id', function(req, res, next){
+  res.json({result: 'another thing'});
+  //read
+});
+app.put('listing/:id', function(req, res, next){
+  //MOAR CRUD
+  //update
+});
+app.delete('/listing/:id', function(req,res,next){
+  //delete
+});
+
 
 
 http.createServer(app).listen(app.get('port'), function(){
