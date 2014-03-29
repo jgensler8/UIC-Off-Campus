@@ -1,43 +1,116 @@
 <div class="panel">
   <div class="row">
-    <form class="small-12 large-4 columns">
+    <form id="listingForm" class="small-12 large-4 columns">
       <fieldset>
-        <legend>Select Listing Type</legend>
         <div class="row">
-          <div class="large-12 columns">
+          <div class="small-12 large-12 columns">
             <label>I'm trying to:
-              <select id="listType">
+              <select name="{{listingType.name}}">
                 <option value="1">lease a whole Appt</option>
-                <option value="2">sub lease a room, for the long term (yearly)</option>
-                <option value="3">sub lease a room, for the short term (a few months)</option>
+                <option value="2">sub lease a room, for the long term</option>
+                <option value="3">sub lease a room, for the short term </option>
                 <option value="51">find a whole Appt</option>
-                <option value="52">find a room in the long term (yearly)</option>
-                <option value="53">find a room in the short term (a few months)</option>
+                <option value="52">find a room in the long term</option>
+                <option value="53">find a room in the short term</option>
               </select>
             </label>
-            <span data-tooltip class="has-tip" title="A yearly commitment">Long term?</span><br>
-            <span data-tooltip class="has-tip" title="1 to 3 months or more">Short term?</span><br>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-6 large-6 columns">
+            <span data-tooltip class="has-tip" title="a yearly commitment">Long term?</span>
+          </div>
+          <div class="small-6 large-6 columns">
+            <span data-tooltip class="has-tip" title="1 to 3 months or more">Short term?</span>
           </div>
         </div>
       </fieldset>
     </form>
-    <form class="small-12 large-8 columns">
+    <form id="criteriaForm" class="small-12 large-8 columns">
       <fieldset>
-        <legend>Select Criteria</legend>
         <div class="row">
-          <div class="large-12 columns">
-            <label>I'm trying to:
-              <select>
-                <option value="1">lease a whole Appt</option>
-                <option value="2">sub lease a room, for the long term (yearly)</option>
-                <option value="3">sub lease a room, for the short term (a few months)</option>
-                <option value="51">find a whole Appt</option>
-                <option value="52">find a room in the long term (yearly)</option>
-                <option value="53">find a room in the short term (a few months)</option>
-              </select>
+          <div class="small-12 medium-6 large-6 columns">
+            <label>Date available from<small> required</small>
+              <input name="{{availableFromDate.name}}" type="date" required>
+            </label>
+          </div>
+          <div class="small-12 medium-6 large-6 columns">
+            <label>Date available to<small> required</small>
+              <input name="{{availableToDate.name}}" type="date" required>
             </label>
           </div>
         </div>
+
+        <div class="row">
+          <div class="small-12 medium-6 large-6 columns">
+            <label>Number and Street Name<small> required</small>
+              <input name="{{addrLine.name}}" type="text" placeholder="123 S. Halsted St" required>
+            </label>
+            <label>Appartment Number<br>
+              <input name="{{addrAptNum.name}}" type="text" placeholder="Apt Num">
+            </label>
+          </div>
+          <div class="small-12 medium-6 large-6 columns">
+            <label>City, State, ZIP<small> required</small>
+              <input name="{{addrCity.name}}" type="text" placeholder="City" required>
+              <input name="{{addrState.name}}" type="text" placeholder="State" required>
+              <input name="{{addrZip.name}}" type="number" placeholder="ZIP" required>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-12 medium-4 large-4 columns">
+            <label>Price<small> required</small>
+              <input name="{{price.name}}" type="number" required>
+            </label>
+          </div>
+          <div class="small-12 medium-4 large-4 columns">
+            <label>Bedrooms<small> required</small>
+              <input name="{{bedrooms.name}}" type="number" required>
+            </label>
+          </div>
+          <div class="small-12 medium-4 large-4 columns">
+            <label>Bathrooms<small> required</small>
+              <input name="{{fullBathrooms.name}}" type="number" placeholder="full" required>
+              <input name="{{halfBathrooms.name}}" type="number" placeholder="half" required>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-12 medium-4 large-4 columns">
+            <label>Utilities Included<br>
+              <p>
+              <input name="{{heatInc.name}}" type="checkbox"><label>Heat</label><br>
+              <input name="{{waterInc.name}}" type="checkbox"><label>Water</label><br>
+              <input name="{{garbageInc.name}}" type="checkbox"><label>Garbage</label><br>
+              <input name="{{electricityInc.name}}" type="checkbox"><label>Electricity</label><br>
+              <input name="{{internetInc.name}}" type="checkbox"><label>Internet</label>
+              </p>
+            </label>
+          </div>
+          <div class="small-12 medium-4 large-4 columns">
+            <label>Square Feet<br>
+              <input name="{{squareFeet.name}}" type="number" pattern="number"><br>
+            </label>
+            <input name="{{smokingAllowed.name}}" type="checkbox"><label>Smoking Allowed</label><br>
+          </div>
+          <div class="small-12 medium-4 large-4 columns">
+            <label>Pets Allowed<br>
+              <p>
+              <input name="{{dogAllowed.name}}" type="checkbox"><label>Dogs Allowed</label><br>
+              <input name="{{catAllowed.name}}" type="checkbox"><label>Cats Allowed</label>
+              </p>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <input class="button left" type="submit" name="submit"/>
+          <div class="button right" name="showMap">Show On Map</div>
+        </div>
+
       </fieldset>
     </form>
   </div>

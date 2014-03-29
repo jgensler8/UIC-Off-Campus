@@ -1,7 +1,7 @@
 var ListingCollection = Backbone.Collection.extend({
-  model: ListingModel,
+  model: 'ListingModel',
   url: 'listing/all',
   initialize: function(){
-    this.fetch();
+    //this.fetch();
   }
 })

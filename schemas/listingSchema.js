@@ -14,7 +14,7 @@ exports.listing = mongoose.model('listing', new mongoose.Schema({
     required: true
   },
   postedBy: {
-    type: Number,
+    type: String,
     required: true
   },
   postDate: {
@@ -73,7 +73,8 @@ exports.listing = mongoose.model('listing', new mongoose.Schema({
       garbageInc: Boolean,
       heatInc: Boolean,
       waterInc: Boolean,
-      elecInc: Boolean
+      electricInc: Boolean,
+      internetInc: Boolean
     },
     squareFeet: Number,
     catAllowed: Boolean,
