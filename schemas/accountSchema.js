@@ -10,4 +10,4 @@ exports.account = mongoose.model('account', new mongoose.Schema({
   firstName: String,
   lastName: String,
   facebookid: String,
-},{strict: true}));
+},{strict: true, collection: 'accounts'}));

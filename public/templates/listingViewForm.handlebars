@@ -6,12 +6,12 @@
           <div class="small-12 large-12 columns">
             <label>I'm trying to:
               <select name="{{listingType.name}}">
-                <option value="1">lease a whole Appt</option>
+                <option value="1">lease a whole apartment</option>
                 <option value="2">sub lease a room, for the long term</option>
                 <option value="3">sub lease a room, for the short term </option>
-                <option value="51">find a whole Appt</option>
-                <option value="52">find a room in the long term</option>
-                <option value="53">find a room in the short term</option>
+                <option value="51">find a whole apartment</option>
+                <option value="52">find a room for the long term</option>
+                <option value="53">find a room for the short term</option>
               </select>
             </label>
           </div>
@@ -46,7 +46,7 @@
             <label>Number and Street Name<small> required</small>
               <input name="{{addrLine.name}}" type="text" placeholder="123 S. Halsted St" required>
             </label>
-            <label>Appartment Number<br>
+            <label>Apartment Number<br>
               <input name="{{addrAptNum.name}}" type="text" placeholder="Apt Num">
             </label>
           </div>
@@ -61,7 +61,7 @@
 
         <div class="row">
           <div class="small-12 medium-4 large-4 columns">
-            <label>Price<small> required</small>
+            <label>Maximum Price<small> required</small>
               <input name="{{price.name}}" type="number" required>
             </label>
           </div>
@@ -85,13 +85,13 @@
               <input name="{{heatInc.name}}" type="checkbox"><label>Heat</label><br>
               <input name="{{waterInc.name}}" type="checkbox"><label>Water</label><br>
               <input name="{{garbageInc.name}}" type="checkbox"><label>Garbage</label><br>
-              <input name="{{electricityInc.name}}" type="checkbox"><label>Electricity</label><br>
+              <input name="{{electricInc.name}}" type="checkbox"><label>Electricity</label><br>
               <input name="{{internetInc.name}}" type="checkbox"><label>Internet</label>
               </p>
             </label>
           </div>
           <div class="small-12 medium-4 large-4 columns">
-            <label>Square Feet<br>
+            <label>Square Feet Of Apartment<br>
               <input name="{{squareFeet.name}}" type="number" pattern="number"><br>
             </label>
             <input name="{{smokingAllowed.name}}" type="checkbox"><label>Smoking Allowed</label><br>
@@ -107,11 +107,39 @@
         </div>
 
         <div class="row">
-          <input class="button left" type="submit" name="submit"/>
-          <div class="button right" name="showMap">Show On Map</div>
+          <div class="small-12 medium-12 large-12 columns">
+            <input class="button left" type="submit" name="submit"/>
+          </div>
         </div>
-
       </fieldset>
     </form>
   </div>
 </div>
+
+{{#each errorSubmitMessages}}
+<div id="{{name}}" class="reveal-modal" data-reveal>
+  <p class="lead">Sorry, we've got an error on our hands</p>
+  <p>{{message}}</p>
+</div>
+<script>$('#{{name}}'').data('reveal-init', {
+    animation: 'fadeAndPop',
+    animation_speed: 250,
+    close_on_background_click: false,
+    close_on_esc: false,
+    dismiss_modal_class: 'close-reveal-modal',
+    bg_class: 'reveal-modal-bg',
+    bg : $('.reveal-modal-bg'),
+    css : {
+        open : {
+            'opacity': 0,
+            'visibility': 'visible',
+            'display' : 'block'
+        },
+        close : {
+            'opacity': 1,
+            'visibility': 'hidden',
+            'display': 'none'
+        }
+    }
+})</script>
+{{/each}}

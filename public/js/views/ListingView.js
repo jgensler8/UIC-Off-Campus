@@ -21,7 +21,6 @@ var ListingView = Backbone.View.extend({
     'change [id="criteriaForm"]': 'contentChanged',
     'change [id="listingForm"]': 'contentChanged',
     'submit': 'submitForm',
-    'click': 'showOnMap'
   },
   checkDisables: function(event){
     console.log(event.target.value);
@@ -31,16 +30,19 @@ var ListingView = Backbone.View.extend({
     this.model.set(event.target.name,event.target.value);
   },
   submitForm: function(event){
-    event.preventDefault();
+    event.preventDefault();;
+    this.model.set('listingType', 1);
     this.model.set('postedBy', "JEFF");
-    this.model.set('lat', 9001);
-    this.model.set('lon', 9001)
+    this.model.set('postDate', this.model.get('availableFromDate'));
     this.model.save({}, {
-      succes: function( model, response){
-        console.log("SUCCESS");
+      success: function( model, response){
+        if( response.error === true){
+          $(document).foundation('reflow');
+          $('#'+response.type).foundation('reveal','open');
+        }
       },
       error: function( model, response){
-        console.log("FAILURE");
+        console.log("LISTING MESSAGE ERROR");
       }
     });
   },

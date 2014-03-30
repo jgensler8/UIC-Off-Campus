@@ -27,6 +27,14 @@ Add a 'facebook_options.json' file in the root directory. You will need
 }
 ```
 
+Add a 'mongolab_options.json' file in the root directory. You will need 
+```
+{
+  "username": "NAME_GOES_HERE",
+  "userpass": "PASS_GOES_HERE"
+}
+```
+
 Start the server:
 ```
 $ node server.js [--port=[CHOOSE A PORT]]
@@ -38,6 +46,7 @@ $ node server.js [--port=[CHOOSE A PORT]]
 *   Express
 *   Optimist
 *   passport, passport-facebook, passport-local
+*   geocoder
 
 ##Front end build with the help of:##
 *   Bower
@@ -45,6 +54,7 @@ $ node server.js [--port=[CHOOSE A PORT]]
 *   Foundation
 *   Handlebars
 *   Google Maps API
+*   Facebook Graph API
 
 ##In the works:##
 *   UIC bluestem, authentication for uic students

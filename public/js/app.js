@@ -36,7 +36,7 @@ var AppRouter = Backbone.Router.extend({
       error: function(data, res){
         app.navigate('login', {trigger: true});
       }
-    })
+    });
   },
 
   showHelp: function(){
@@ -45,12 +45,10 @@ var AppRouter = Backbone.Router.extend({
 
   showSearch: function(){
     $('#app').html(this.searchView.render().el);
-    this.searchView.renderMap();
+    this.searchModel.renderMap();
   },
 
   showCreate: function(){
-    $('#app').html(this.createListingView.renderForm().el);
-    /*
     this.accountModel.checkAuth({
       success: function(data, res){
         $('#app').html(app.createListingView.renderForm().el); //XXX
@@ -58,8 +56,7 @@ var AppRouter = Backbone.Router.extend({
       error: function(data, res){
         app.navigate('login', {trigger: true});
       }
-    })
-*/
+    });
   }
 
 });

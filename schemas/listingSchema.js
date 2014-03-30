@@ -21,7 +21,7 @@ exports.listing = mongoose.model('listing', new mongoose.Schema({
     type: Date,
     required: true,
   },
-  avilableFromDate: {
+  availableFromDate: {
     type: Date,
     required: true,
   },
@@ -29,56 +29,51 @@ exports.listing = mongoose.model('listing', new mongoose.Schema({
     type: Date,
     required: true,
   },
-  address: {
-    addr: {
-      type: String,
-      required: true
-    },
-    addrAptNum: String,
-    addrCity: {
-      type: String,
-      required: true
-    },
-    addrZip: {
-      type: Number,
-      required: true
-    },
-    addrState: {
-      type: String,
-      required: true
-    },
-    lat: Number,
-    lon: Number
+
+  addrLine: {
+    type: String,
+    required: true
   },
-  features: {
-    price: {
-      type: Number,
-      required: true
-    },
-    bedrooms: {
-      type: Number,
-      required: true
-    },
-    bathrooms: {
-      full: {
-        type: Number,
-        required: true
-      },
-      half: {
-        type: Number,
-        required: true
-      }
-    },
-    utilities:{
-      garbageInc: Boolean,
-      heatInc: Boolean,
-      waterInc: Boolean,
-      electricInc: Boolean,
-      internetInc: Boolean
-    },
-    squareFeet: Number,
-    catAllowed: Boolean,
-    dogAllowed: Boolean,
-    smokingAllowed: Boolean
-  } 
-}, {strict: true}));
+  addrAptNum: String,
+  addrCity: {
+    type: String,
+    required: true
+  },
+  addrZip: {
+    type: Number,
+    required: true
+  },
+  addrState: {
+    type: String,
+    required: true
+  },
+
+  lat: Number,
+  lon: Number,
+
+  price: {
+    type: Number,
+    required: true
+  },
+  bedrooms: {
+    type: Number,
+    required: true
+  },
+  fullBathrooms: {
+    type: Number,
+    required: true
+  },
+  halfBathrooms: {
+    type: Number,
+    required: true
+  },
+  garbageInc: Boolean,
+  heatInc: Boolean,
+  waterInc: Boolean,
+  electricInc: Boolean,
+  internetInc: Boolean,
+  squareFeet: Number,
+  catAllowed: Boolean,
+  dogAllowed: Boolean,
+  smokingAllowed: Boolean
+}, {strict: true, collection: 'listings'}));
