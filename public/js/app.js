@@ -44,8 +44,7 @@ var AppRouter = Backbone.Router.extend({
   },
 
   showSearch: function(){
-    $('#app').html(this.searchView.render().el);
-    this.searchModel.renderMap();
+    $.when($('#app').html(this.searchView.render().el)).then(this.searchModel.renderMap());
   },
 
   showCreate: function(){

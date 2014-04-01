@@ -8,8 +8,6 @@ var SearchView = Backbone.View.extend({
     return this;
   },
   renderSelection: function(item){
-    console.log(item);
-    console.log( Handlebars.templates.listingViewComplete(item.attributes));
     $('#'+this.model.searchResultsID).html( Handlebars.templates.listingViewComplete(item.attributes) );
   }
 })

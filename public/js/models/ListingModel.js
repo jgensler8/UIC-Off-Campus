@@ -38,8 +38,8 @@ var ListingModel = Backbone.Model.extend({
   },
   emitMarkerClick: function(){
     console.log("clicked");
-    var infoWindow = new google.maps.InfoWindow({ content: 'HELLO WORLD'});
-    infoWindow.open( this.get('marker').map, this.get('marker'));
+    //var infoWindow = new google.maps.InfoWindow({ content: this.get('price').toString()});
+    //infoWindow.open( this.get('marker').map, this.get('marker'));
     this.trigger('markerClicked', this);
   }
 })
