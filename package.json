@@ -13,6 +13,7 @@
     "passport-local": "^1.0.0",
     "passport-facebook": "^1.0.3",
     "optimist": "^0.6.1",
-    "mongoose": "^3.8.8"
+    "mongoose": "^3.8.8",
+    "geocoder": "^0.1.0"
   }
 }

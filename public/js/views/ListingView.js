@@ -1,7 +1,12 @@
 var ListingView = Backbone.View.extend({
   initialize: function(){
-    _.bindAll(this, 'renderComplete', 'renderSmall', 'renderForm', 'checkDisables'
-      , 'submitForm', 'showOnMap');
+    _.bindAll(this, 'renderComplete', 'renderSmall', 'renderForm', 'checkDisables', 'contentChanged', 'submitForm');
+  },
+  events: {
+    'change [id="listType"]': 'checkDisables',
+    'change [id="criteriaForm"]': 'contentChanged',
+    'change [id="listingForm"]': 'contentChanged',
+    'submit': 'submitForm',
   },
   renderComplete: function(){
     this.$el.html( Handlebars.templates.listingViewComplete( this.model));
@@ -16,12 +21,6 @@ var ListingView = Backbone.View.extend({
     this.$el.html( Handlebars.templates.listingViewForm( this.model));
     return this;
   },
-  events: {
-    'change [id="listType"]': 'checkDisables',
-    'change [id="criteriaForm"]': 'contentChanged',
-    'change [id="listingForm"]': 'contentChanged',
-    'submit': 'submitForm',
-  },
   checkDisables: function(event){
     console.log(event.target.value);
     //TODO
@@ -30,23 +29,22 @@ var ListingView = Backbone.View.extend({
     this.model.set(event.target.name,event.target.value);
   },
   submitForm: function(event){
-    event.preventDefault();;
-    this.model.set('listingType', 1);
-    this.model.set('postedBy', "JEFF");
-    this.model.set('postDate', this.model.get('availableFromDate'));
+    event.preventDefault();
     this.model.save({}, {
       success: function( model, response){
         if( response.error === true){
           $(document).foundation('reflow');
           $('#'+response.type).foundation('reveal','open');
         }
+        else{
+          $(document).foundation('reflow');
+          $('#'+response.type).foundation('reveal','open');
+          $('#submit').attr('disabled', true);
+        }
       },
       error: function( model, response){
         console.log("LISTING MESSAGE ERROR");
       }
     });
-  },
-  showOnMap: function(){
-    
   }
 })

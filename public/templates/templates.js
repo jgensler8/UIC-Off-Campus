@@ -48,7 +48,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
-  buffer += "\n  <span data-tooltip class=\"has-tip\" title=\"";
+  buffer += "\n      <span data-tooltip class=\"has-tip row\" title=\"";
   if (helper = helpers.response) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.response); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -56,42 +56,99 @@ function program1(depth0,data) {
   if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</span><br>\n  ";
+    + "</span><br>\n      ";
   return buffer;
   }
 
-  buffer += "<div class=\"panel callout radius\">\n  <p>";
+  buffer += "<div class=\"panel callout radius\">\n  <div class=\"row text-center\"><h1>";
   if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</p>\n\n  <p>"
+    + "</h1></div>\n\n  <div class=\"row text-center\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <h3>"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.howTo)),stack1 == null || stack1 === false ? stack1 : stack1.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "<br>\n  ";
+    + "</h3>\n      ";
   stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.howTo)),stack1 == null || stack1 === false ? stack1 : stack1.howTos), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n  </p>\n\n  <p>"
+  buffer += "\n    </div>\n\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <h3>"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.faq)),stack1 == null || stack1 === false ? stack1 : stack1.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "<br>\n  ";
+    + "</h3>\n      ";
   stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.faq)),stack1 == null || stack1 === false ? stack1 : stack1.faqs), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n  </p>\n</div>";
+  buffer += "\n    </div>\n  </div>\n</div>";
   return buffer;
   });
 templates['accountView'] = template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression, self=this;
 
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n    <div class=\"row panel\">\n        <div class=\"small-12 large-12 columns\">\n\n          <div class=\"small-12 medium-6 large-6 columns\">\n            <h4>";
+  if (helper = helpers.addrLine) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrLine); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (helper = helpers.addrAptNum) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrAptNum); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (helper = helpers.addrCity) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrCity); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (helper = helpers.addrState) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrState); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (helper = helpers.addrZip) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrZip); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</h4>\n          </div>\n\n          <div class=\"small-12 medium-6 large-6 columns\">\n            <ul class=\"button-group\">\n              <li><a class=\"button\" type=\"editReveal\" id=\"";
+  if (helper = helpers._id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0._id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\">Edit</a></li>\n              <li><a class=\"button\" type=\"deleteReveal\" id=\"";
+  if (helper = helpers._id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0._id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\">Delete</a></li>\n            </ul>\n          </div>\n\n        </div>\n    </div>\n\n    <div id=\"edit";
+  if (helper = helpers._id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0._id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" class=\"reveal-modal\" data-reveal>\n      <div id=\"template";
+  if (helper = helpers._id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0._id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\"></div>\n      <a class=\"button\" type=\"editSubmit\" id=\"";
+  if (helper = helpers._id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0._id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\">Submit</a> <a class=\"button\">Cancel</a>\n      <a class=\"close-reveal-modal\">&#215;</a>\n    </div>\n\n    <div id=\"delete";
+  if (helper = helpers._id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0._id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" class=\"reveal-modal\" data-reveal>\n      <p class=\"lead\">Are you sure you want to delete?</p>\n      <a class=\"button\" type=\"deleteSubmit\" id=\"";
+  if (helper = helpers._id) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0._id); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\">Delete</a> <a class=\"button\">Cancel</a>\n      <a class=\"close-reveal-modal\">&#215;</a>\n    </div>\n\n    ";
+  return buffer;
+  }
 
-  buffer += "<div class=\"row\">\n  <div class=\"small-2 large-4 columns\">\n    <a class=\"th [radius]\" href=\"#\">\n      <img src=\"http://graph.facebook.com/";
+  buffer += "<div class=\"row panel\">\n  <div class=\"small-6 large-6 columns\">\n    <a class=\"th [radius]\" href=\"#\">\n      <img src=\"http://graph.facebook.com/";
   if (helper = helpers.username) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.username); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "/picture\">\n    </a>\n  </div>\n  <div class=\"small-4 large-4 columns\">\n    ";
+    + "/picture\">\n    </a>\n  </div>\n  <div class=\"small-6 large-6 columns\">\n    <h3>";
   if (helper = helpers.displayName) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.displayName); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\n  </div>\n</div>";
+    + "</h3>\n  </div>\n</div>\n\n\n<div class=\"row\">\n  <fieldset>\n    <legend>Your Listings</legend>\n\n\n    ";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.listings), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n\n\n  </fieldset>\n</div>\n";
   return buffer;
   });
 templates['loginView'] = template(function (Handlebars,depth0,helpers,partials,data) {
@@ -139,83 +196,73 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "\n<div class=\"row panel\">\n  <div class=\"small-6 medium-6 large-8 columns\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <label>";
+  buffer += "<div class=\"row\">\n  <div class=\"panel\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n\n    </div>\n  </div>\n</div>\n\n<div class=\"off-canvas-wrap\" data-offcanvas>\n  <div class=\"inner-wrap\">\n    <nav class=\"tab-bar\">\n      <section class=\"left-small\">\n        <a class=\"left-off-canvas-toggle menu-icon\" ><span></span></a>\n      </section>\n\n      <section class=\"middle tab-bar-section\">\n        <a class=\"title button\" id=\"searchButton\">Search</a>\n      </section>\n\n      <section class=\"right-small\">\n        <a class=\"right-off-canvas-toggle menu-icon\" ><span></span></a>\n      </section>\n    </nav>\n\n    <aside class=\"left-off-canvas-menu\">\n      <ul class=\"off-canvas-list\">\n        <li><label>";
   if (helper = helpers.priceLabel) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.priceLabel); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\n        <input id=\""
+    + "</label></li>\n        <li><input id=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.priceFrom)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"number\" placeholder=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.priceFrom)),stack1 == null || stack1 === false ? stack1 : stack1.placeholder)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" />\n        <input id=\""
+    + "\" /></li>\n        <li><input id=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.priceTo)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"number\" placeholder=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.priceTo)),stack1 == null || stack1 === false ? stack1 : stack1.placeholder)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" />\n      </label>\n\n      <label>"
+    + "\" /></li>\n\n        <li><label>"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.bedrooms)),stack1 == null || stack1 === false ? stack1 : stack1.label)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\n        <input id=\""
+    + "</label></li>\n        <li><input id=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.bedrooms)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"number\" placeholder=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.bedrooms)),stack1 == null || stack1 === false ? stack1 : stack1.placeholder)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" />\n      </label>\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <label>";
+    + "\" /></li>\n\n        <li><label>";
   if (helper = helpers.bathroomsLabel) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.bathroomsLabel); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\n        <input id=\""
+    + "</label></li>\n        <li><input id=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.fullBathrooms)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"number\" placeholder=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.fullBathrooms)),stack1 == null || stack1 === false ? stack1 : stack1.placeholder)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" />\n        <input id=\""
+    + "\" /></li>\n        <li><input id=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.halfBathrooms)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "\" type=\"number\" placeholder=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.halfBathrooms)),stack1 == null || stack1 === false ? stack1 : stack1.placeholder)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" />\n      </label>\n    </div>\n  </div>\n  <div class=\"small-6 medium-6 large-4 columns\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <label>Allowed<br>\n        <input id=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.catAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label for=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.catAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.catAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</label><br>\n        <input id=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.dogAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label for=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.dogAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.dogAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</label><br>\n        <input id=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.smokingAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label for=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.smokingAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.smokingAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</label>\n      </label>\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <label>Included<br>\n        <input id=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.garbageInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label for=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.garbageInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">"
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.garbageInc)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</label><br>\n        <input id=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.heatInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label for=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.heatInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">"
+    + "\" /></li>\n\n        <li><label>Included</label></li>\n        <li><label>"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.heatInc)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</label><br>\n        <input id=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.waterInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label for=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.waterInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">"
+    + "<input type=\"checkbox\" id=\""
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.heatInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\"></input></label></li>\n        <li><label>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.garbageInc)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "<input type=\"checkbox\" id=\""
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.garbageInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\"></input></label></li>\n        <li><label>"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.waterInc)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</label><br>\n        <input id=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.electricInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label for=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.electricInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">"
+    + "<input type=\"checkbox\" id=\""
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.waterInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\"></input></label></li>\n        <li><label>"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.electricInc)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</label>\n      </label>\n    </div>\n  </div>\n</div>\n\n\n";
+    + "<input type=\"checkbox\" id=\""
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.electricInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\"></input></label></li>\n        <li><label>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.garbageInc)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "<input type=\"checkbox\" id=\""
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.garbageInc)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\"></input></label></li>\n        \n        <li><label>Allowed</label></li>\n        <li><label>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.catAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "<input type=\"checkbox\" id=\""
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.catAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\"></input></label></li>\n        <li><label>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.dogAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "<input type=\"checkbox\" id=\""
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.dofAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\"></input></label></li>\n        <li><label>"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.smokingAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "<input type=\"checkbox\" id=\""
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.smokingAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "\"></input></label></li>\n      </ul>\n    </aside>\n\n    <aside class=\"right-off-canvas-menu\">\n      <ul class=\"off-canvas-list\">\n        <li><label>Listing Types</label></li>\n        <li><a href=\"#\">Map</a></li>\n        <li><a href=\"#\">List</a></li>\n      </ul>\n    </aside>\n\n    <section class=\"main-section\">\n      ";
   if (helper = helpers.mapViewTemplate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.mapViewTemplate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n\n<div class=\"row\" id=";
+  buffer += "\n    </section>\n\n  <a class=\"exit-off-canvas\"></a>\n\n  </div>\n</div>\n\n<div class=\"row\" id=";
   if (helper = helpers.searchResultsID) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.searchResultsID); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -225,9 +272,15 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 templates['listingViewForm'] = template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
+  
+  
+  return "checked";
+  }
+
+function program3(depth0,data) {
   
   var buffer = "", stack1, helper;
   buffer += "\n<div id=\"";
@@ -238,58 +291,106 @@ function program1(depth0,data) {
   if (helper = helpers.message) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.message); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</p>\n</div>\n<script>$('#";
-  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "'').data('reveal-init', {\n    animation: 'fadeAndPop',\n    animation_speed: 250,\n    close_on_background_click: false,\n    close_on_esc: false,\n    dismiss_modal_class: 'close-reveal-modal',\n    bg_class: 'reveal-modal-bg',\n    bg : $('.reveal-modal-bg'),\n    css : {\n        open : {\n            'opacity': 0,\n            'visibility': 'visible',\n            'display' : 'block'\n        },\n        close : {\n            'opacity': 1,\n            'visibility': 'hidden',\n            'display': 'none'\n        }\n    }\n})</script>\n";
+    + "</p>\n  <a class=\"close-reveal-modal\">&#215;</a>\n</div>\n";
   return buffer;
   }
 
-  buffer += "<div class=\"panel\">\n  <div class=\"row\">\n    <form id=\"listingForm\" class=\"small-12 large-4 columns\">\n      <fieldset>\n        <div class=\"row\">\n          <div class=\"small-12 large-12 columns\">\n            <label>I'm trying to:\n              <select name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.listingType)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\">\n                <option value=\"1\">lease a whole apartment</option>\n                <option value=\"2\">sub lease a room, for the long term</option>\n                <option value=\"3\">sub lease a room, for the short term </option>\n                <option value=\"51\">find a whole apartment</option>\n                <option value=\"52\">find a room for the long term</option>\n                <option value=\"53\">find a room for the short term</option>\n              </select>\n            </label>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"small-6 large-6 columns\">\n            <span data-tooltip class=\"has-tip\" title=\"a yearly commitment\">Long term?</span>\n          </div>\n          <div class=\"small-6 large-6 columns\">\n            <span data-tooltip class=\"has-tip\" title=\"1 to 3 months or more\">Short term?</span>\n          </div>\n        </div>\n      </fieldset>\n    </form>\n    <form id=\"criteriaForm\" class=\"small-12 large-8 columns\">\n      <fieldset>\n        <div class=\"row\">\n          <div class=\"small-12 medium-6 large-6 columns\">\n            <label>Date available from<small> required</small>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.availableFromDate)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"date\" required>\n            </label>\n          </div>\n          <div class=\"small-12 medium-6 large-6 columns\">\n            <label>Date available to<small> required</small>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.availableToDate)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"date\" required>\n            </label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"small-12 medium-6 large-6 columns\">\n            <label>Number and Street Name<small> required</small>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.addrLine)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"text\" placeholder=\"123 S. Halsted St\" required>\n            </label>\n            <label>Apartment Number<br>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.addrAptNum)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"text\" placeholder=\"Apt Num\">\n            </label>\n          </div>\n          <div class=\"small-12 medium-6 large-6 columns\">\n            <label>City, State, ZIP<small> required</small>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.addrCity)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"text\" placeholder=\"City\" required>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.addrState)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"text\" placeholder=\"State\" required>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.addrZip)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"number\" placeholder=\"ZIP\" required>\n            </label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Maximum Price<small> required</small>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.price)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"number\" required>\n            </label>\n          </div>\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Bedrooms<small> required</small>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.bedrooms)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"number\" required>\n            </label>\n          </div>\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Bathrooms<small> required</small>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.fullBathrooms)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"number\" placeholder=\"full\" required>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.halfBathrooms)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"number\" placeholder=\"half\" required>\n            </label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Utilities Included<br>\n              <p>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.heatInc)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label>Heat</label><br>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.waterInc)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label>Water</label><br>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.garbageInc)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label>Garbage</label><br>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.electricInc)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label>Electricity</label><br>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.internetInc)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label>Internet</label>\n              </p>\n            </label>\n          </div>\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Square Feet Of Apartment<br>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.squareFeet)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"number\" pattern=\"number\"><br>\n            </label>\n            <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.smokingAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label>Smoking Allowed</label><br>\n          </div>\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Pets Allowed<br>\n              <p>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.dogAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label>Dogs Allowed</label><br>\n              <input name=\""
-    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.catAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\" type=\"checkbox\"><label>Cats Allowed</label>\n              </p>\n            </label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"small-12 medium-12 large-12 columns\">\n            <input class=\"button left\" type=\"submit\" name=\"submit\"/>\n          </div>\n        </div>\n      </fieldset>\n    </form>\n  </div>\n</div>\n\n";
-  stack1 = helpers.each.call(depth0, (depth0 && depth0.errorSubmitMessages), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+function program5(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n<div id=\"";
+  if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" class=\"reveal-modal\" data-reveal>\n  <p class=\"lead\">Horray!</p>\n  <p>";
+  if (helper = helpers.message) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.message); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\n  <a class=\"close-reveal-modal\">&#215;</a>\n</div>\n";
+  return buffer;
+  }
+
+  buffer += "<div class=\"panel\">\n  <div class=\"row\">\n    <form id=\"listingForm\" class=\"small-12 large-4 columns\">\n      <fieldset>\n        <div class=\"row\">\n          <div class=\"small-12 large-12 columns\">\n            <label>I'm trying to:\n              <select name=\"listingType\">\n                <option value=\"1\">lease a whole apartment</option>\n                <option value=\"2\">sub lease a room, for the long term</option>\n                <option value=\"3\">sub lease a room, for the short term </option>\n                <option value=\"51\">find a whole apartment</option>\n                <option value=\"52\">find a room for the long term</option>\n                <option value=\"53\">find a room for the short term</option>\n              </select>\n            </label>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"small-6 large-6 columns\">\n            <span data-tooltip class=\"has-tip\" title=\"a yearly commitment\">Long term?</span>\n          </div>\n          <div class=\"small-6 large-6 columns\">\n            <span data-tooltip class=\"has-tip\" title=\"1 to 3 months or more\">Short term?</span>\n          </div>\n        </div>\n      </fieldset>\n    </form>\n    <form id=\"criteriaForm\" class=\"small-12 large-8 columns\">\n      <fieldset>\n        <div class=\"row\">\n          <div class=\"small-12 medium-6 large-6 columns\">\n            <label>Date available from<small> required</small>\n              <input name=\"availableFromDate\" type=\"date\" value=\"";
+  if (helper = helpers.availableFromDate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.availableFromDate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" placeholder=\"XX/XX/XXXX\" required>\n            </label>\n          </div>\n          <div class=\"small-12 medium-6 large-6 columns\">\n            <label>Date available to<small> required</small>\n              <input name=\"availableToDate\" type=\"date\" value=\"";
+  if (helper = helpers.availableToDate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.availableToDate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" placeholder=\"XX/XX/XXXX\" required>\n            </label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"small-12 medium-6 large-6 columns\">\n            <label>Number and Street Name<small> required</small>\n              <input name=\"addrLine\" type=\"text\" value=\"";
+  if (helper = helpers.addrLine) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrLine); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" placeholder=\"123 S. Halsted St\" required>\n            </label>\n          </div>\n          <div class=\"small-12 medium-6 large-6 columns\">\n            <label>Apartment Number<br>\n              <input name=\"addrAptNum\" type=\"text\" value=\"";
+  if (helper = helpers.addrAptNum) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrAptNum); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" placeholder=\"Apt Num\">\n            </label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>City<small> required</small><br>\n              <input name=\"addrCity\" type=\"text\" value=\"";
+  if (helper = helpers.addrCity) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrCity); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" placeholder=\"City\" required>\n            </label>\n          </div>\n          <div class=\"small-6 medium-4 large-4 columns\">\n            <label>State<small> required</small><br>\n              <input name=\"addrState\" type=\"text\" value=\"";
+  if (helper = helpers.addrState) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrState); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" placeholder=\"State\" required>\n            </label>\n          </div>\n          <div class=\"small-6 medium-4 large-4 columns\">\n            <label>ZIP<small> required</small><br>\n              <input name=\"addrZip\" type=\"number\" value=\"";
+  if (helper = helpers.addrZip) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrZip); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" placeholder=\"ZIP\" required>\n            </label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"small-6 medium-6 large-6 columns\">\n            <label>Contact Email<small> required</small><br>\n              <input name=\"contactEmail\" type=\"email\" value=\"";
+  if (helper = helpers.contactEmail) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.contactEmail); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" placeholder=\"user@domain.com\" required>\n            </label>\n          </div>\n          <div class=\"small-6 medium-6 large-6 columns\">\n            <label>Maximum Price<small> required</small>\n              <input name=\"price\" type=\"number\" value=\"";
+  if (helper = helpers.price) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.price); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" required>\n            </label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Bedrooms<small> required</small>\n              <input name=\"bedrooms\" type=\"number\" value=\"";
+  if (helper = helpers.bedrooms) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.bedrooms); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" required>\n            </label>\n          </div>\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Full Bathrooms<small> required</small>\n              <input name=\"fullBathrooms\" type=\"number\" value=\"";
+  if (helper = helpers.fullBathrooms) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.fullBathrooms); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" placeholder=\"full\" required>\n            </label>\n          </div>\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Half Bathrooms<small> required</small>\n              <input name=\"halfBathrooms\" type=\"number\" value=\"";
+  if (helper = helpers.halfBathrooms) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.halfBathrooms); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" placeholder=\"half\" required>\n            </label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Utilities Included<br>\n              <p>\n              <input name=\"heatInc\" type=\"checkbox\" ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.heatInc), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "><label>Heat</label><br>\n              <input name=\"waterInc\" type=\"checkbox\" ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.waterInc), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "><label>Water</label><br>\n              <input name=\"garbageInc\" type=\"checkbox\" ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.garbageInc), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "><label>Garbage</label><br>\n              <input name=\"electricInc\" type=\"checkbox\" ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.electricInc), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "><label>Electricity</label><br>\n              <input name=\"internetInc\" type=\"checkbox\" ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.internetInc), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "><label>Internet</label>\n              </p>\n            </label>\n          </div>\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Square Feet Of Apartment<br>\n              <input name=\"squareFeet\" type=\"number\" pattern=\"number\" value=\"";
+  if (helper = helpers.squareFeet) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.squareFeet); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\"><br>\n            </label>\n            <input name=\"smokingAllowed\" type=\"checkbox\" ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.smokingAllowed), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "><label>Smoking Allowed</label><br>\n          </div>\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Pets Allowed<br>\n              <p>\n              <input name=\"dogAllowed.name\" type=\"checkbox\" ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.dogAllowed), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "><label>Dogs Allowed</label><br>\n              <input name=\"catAllowed.name\" type=\"checkbox\" ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.catAllowed), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "><label>Cats Allowed</label>\n              </p>\n            </label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"small-12 medium-12 large-12 columns\">\n            <input class=\"button left\" type=\"submit\" name=\"submit\"/>\n          </div>\n        </div>\n      </fieldset>\n    </form>\n  </div>\n</div>\n\n";
+  stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.submitMessages)),stack1 == null || stack1 === false ? stack1 : stack1.error), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n\n";
+  stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.submitMessages)),stack1 == null || stack1 === false ? stack1 : stack1.success), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   return buffer;
   });
@@ -301,7 +402,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
-  buffer += "<li class=\"bullet-item\">Squarefeet: ";
+  buffer += "<li class=\"bullet-item\">Square Feet: ";
   if (helper = helpers.sqaureFeet) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.sqaureFeet); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -312,13 +413,49 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   
-  return "<li class=\"price\">Heat Included</li>";
+  return "<li class=\"bullet-item\">Heat Included</li>";
   }
 
 function program5(depth0,data) {
   
   
-  return "<li class=\"price\">Garbage Incded</li>";
+  return "<li class=\"bullet-item\">Water Included</li>";
+  }
+
+function program7(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Garbage Included</li>";
+  }
+
+function program9(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Electricity Included</li>";
+  }
+
+function program11(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Internet Included</li>";
+  }
+
+function program13(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Dogs Allowed</li>";
+  }
+
+function program15(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Cats Allowed</li>";
+  }
+
+function program17(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Smoking Allowed</li>";
   }
 
   buffer += "<div class=\"row\">\n  <div class=\"small-12 medium-12 large-12 columns\">\n    <ul class=\"pricing-table\">\n      <li class=\"title\">At a Glance</li>\n      <li class=\"price\">$";
@@ -338,19 +475,10 @@ function program5(depth0,data) {
   else { helper = (depth0 && depth0.halfBathrooms); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + " half</li>\n      <li class=\"cta-button\"><a class=\"button\" href=\"#\">Contact ";
-  if (helper = helpers.postedBy) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.postedBy); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if (helper = helpers.postedByName) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.postedByName); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</a> <a class=\"button\" href=\"#\">SocialScore</a></li>\n      ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.sqaureFeet), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n      ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.heatInc), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n      ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.heatInc), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n    </ul>\n  </div>\n\n<!---\n  <div class=\"small-12 medium-6 large-6 columns\">\n    <div class=\"row\">\n      <fieldset>\n        ";
+    + "</a> <a class=\"button\" href=\"#\">More Information</a></li>\n    </ul>\n  </div>\n\n<!---\n  <div class=\"small-12 medium-6 large-6 columns\">\n    <div class=\"row\">\n      <fieldset>\n        ";
   if (helper = helpers.availableFromDate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.availableFromDate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -374,15 +502,42 @@ function program5(depth0,data) {
   if (helper = helpers.addrZip) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.addrZip); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</span></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  ---->\n</div>";
+    + "</span></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  ---->\n  \n</div>\n\n<div id=\"MoreInfoModal\" class=\"reveal-modal\" data-reveal>\n  <p class=\"lead\">Full listing:</p>\n  <ul class=\"pricing-table\">\n    <li class=\"bullet-item\">Available From: ";
+  if (helper = helpers.availableFromDate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.availableFromDate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</li>\n    <li class=\"bullet-item\">Available To: ";
+  if (helper = helpers.availableToDate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.availableToDate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</li>\n    <li class=\"bullet-item\"></li>\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.squareFeet), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.heatInc), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.waterInc), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.garbageInc), {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.electricInc), {hash:{},inverse:self.noop,fn:self.program(9, program9, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.internetInc), {hash:{},inverse:self.noop,fn:self.program(11, program11, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.dogAllowed), {hash:{},inverse:self.noop,fn:self.program(13, program13, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.catAllowed), {hash:{},inverse:self.noop,fn:self.program(15, program15, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.smokingAllowed), {hash:{},inverse:self.noop,fn:self.program(17, program17, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n  </ul>\n\n  <a class=\"close-reveal-modal\">&#215;</a>\n</div>";
   return buffer;
-  });
-templates['listingViewSmall'] = template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  
-
-
-  return "SMALL LISTING VIEW TODO";
   });
 })();

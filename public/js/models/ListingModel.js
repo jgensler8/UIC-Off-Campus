@@ -1,45 +1,63 @@
 var ListingModel = Backbone.Model.extend({
   urlRoot: 'listing',
-  legendTitle: '',
-  isOnMap: false,
+  defaults: {
+    legendTitle: '',
+    isOnMap: false,
 
-  listingType: { value: 1, name: 'listingType' },
-  postedBy: { value: '', name: 'postedBy' },
-  postDate: { value: '', name: 'postDate' },
-  availableFromDate: { value: null, name: 'availableFromDate' },
-  availableToDate: { value: null, name: 'availableToDate' },
-  addrLine: { value: '', name: 'addrLine' },
-  addrAptNum: { value: '', name: 'addrAptNum' },
-  addrCity: { value: '', name: 'addrCity' },
-  addrZip: { value: '', name: 'addrZip'},
-  addrState: { value: '', name: 'addrState' },
-  lat: { value: 0, name: 'lat'},
-  lon: { value: 0, name: 'lon'},
-  price: { value: 0, name: 'price' },
-  bedrooms: { value: 0, name: 'bedrooms' },
-  fullBathrooms: { value: 0, name: 'fullBathrooms' },
-  halfBathrooms: { value: 0, name: 'halfBathrooms' },
-  garbageInc: { value: false, name: 'garbageInc' },
-  heatInc: { value: false, name: 'heatInc' },
-  waterInc: { value: false, name: 'waterInc' },
-  electricInc: { value: false, name: 'electricInc' },
-  internetInc: { value: false, name: 'internetInc' },
-  squareFeet: { value: 0, name: 'squareFeet' },
-  catAllowed: { value: false, name: 'catAllowed' },
-  dogAllowed: { value: false, name: 'dogAllowed' },
-  smokingAllowed: { value: false, name: 'smokingAllowed' },
-  errorSubmitMessages: [
-    { name: "DATABASE", message: "There is an error saving your listing. Try again later"},
-    { name: "GEOCODE", message: "There is an error geocoding your listing. Please edit your address"},
-    { name: "LIMIT", message: "There is an error in the limit of listings you can post. The limit is 10."}
-  ],
+    listingType: 1,
+    postedByName: '',
+    postedById: '',
+    postDate: '',
+    availableFromDate: '',
+    availableToDate: '',
+    addrLine: '',
+    addrAptNum: '',
+    addrCity: '',
+    addrZip: '',
+    addrState: '',
+    lat: 0,
+    lon: 0,
+    price: 0,
+    bedrooms: 0,
+    fullBathrooms: 0,
+    halfBathrooms: 0,
+    garbageInc: false,
+    heatInc: false,
+    waterInc: false,
+    electricInc: false,
+    internetInc: false,
+    squareFeet: false,
+    catAllowed: false,
+    dogAllowed: false,
+    smokingAllowed: false,
+  },
+  submitMessages: {
+    error: [
+      { name: "DATABASE", message: "There is an error saving your listing. Try again later"},
+      { name: "GEOCODE", message: "There is an error geocoding your listing. Please edit your address"},
+      { name: "LIMIT", message: "There is an error in the limit of listings you can post. The limit is 5."},
+      ],
+    success: [
+      { name: "SUCCESS", message: "Congrats! Your listing was successfully posted!"}
+      ]
+  },
   initialize: function(){
-    _.bindAll(this, 'emitMarkerClick');
+    _.bindAll(this, 'emitMarkerClick', 'fetchUserData');
   },
   emitMarkerClick: function(){
     console.log("clicked");
     //var infoWindow = new google.maps.InfoWindow({ content: this.get('price').toString()});
     //infoWindow.open( this.get('marker').map, this.get('marker'));
     this.trigger('markerClicked', this);
+  },
+  fetchUserData: function(){
+    this.fetch({
+      url: 'listing/userdata'
+    },
+    {
+      success: function(model, response, options){
+        this.set(clickData, model);
+      }
+    })
   }
 })

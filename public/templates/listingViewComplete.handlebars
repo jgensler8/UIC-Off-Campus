@@ -5,10 +5,7 @@
       <li class="price">${{price}}</li>
       <li class="bullet-item">Bedrooms: {{bedrooms}}</li>
       <li class="bullet-item">Bathrooms: {{fullBathrooms}} full and {{halfBathrooms}} half</li>
-      <li class="cta-button"><a class="button" href="#">Contact {{postedBy}}</a> <a class="button" href="#">SocialScore</a></li>
-      {{#if sqaureFeet}}<li class="bullet-item">Squarefeet: {{sqaureFeet}}</li>{{/if}}
-      {{#if heatInc}}<li class="price">Heat Included</li>{{/if}}
-      {{#if heatInc}}<li class="price">Garbage Incded</li>{{/if}}
+      <li class="cta-button"><a class="button" href="#">Contact {{postedByName}}</a> <a class="button" href="#">More Information</a></li>
     </ul>
   </div>
 
@@ -32,4 +29,25 @@
     </div>
   </div>
   ---->
+  
+</div>
+
+<div id="MoreInfoModal" class="reveal-modal" data-reveal>
+  <p class="lead">Full listing:</p>
+  <ul class="pricing-table">
+    <li class="bullet-item">Available From: {{availableFromDate}}</li>
+    <li class="bullet-item">Available To: {{availableToDate}}</li>
+    <li class="bullet-item"></li>
+    {{#if squareFeet}}<li class="bullet-item">Square Feet: {{sqaureFeet}}</li>{{/if}}
+    {{#if heatInc}}<li class="bullet-item">Heat Included</li>{{/if}}
+    {{#if waterInc}}<li class="bullet-item">Water Included</li>{{/if}}
+    {{#if garbageInc}}<li class="bullet-item">Garbage Included</li>{{/if}}
+    {{#if electricInc}}<li class="bullet-item">Electricity Included</li>{{/if}}
+    {{#if internetInc}}<li class="bullet-item">Internet Included</li>{{/if}}
+    {{#if dogAllowed}}<li class="bullet-item">Dogs Allowed</li>{{/if}}
+    {{#if catAllowed}}<li class="bullet-item">Cats Allowed</li>{{/if}}
+    {{#if smokingAllowed}}<li class="bullet-item">Smoking Allowed</li>{{/if}}
+  </ul>
+
+  <a class="close-reveal-modal">&#215;</a>
 </div>

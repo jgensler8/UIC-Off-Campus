@@ -1,6 +1,7 @@
 var SearchModel = Backbone.Model.extend({
   mapViewTemplate: '',
   searchResultsID: 'searchResultsID',
+  searchButtonID: 'searchButton',
   priceLabel: 'Price',
   priceFrom: { id: 'priceFrom', placeholder: 'From' },
   priceTo:{ id: 'priceTo', placeholder: 'To' },
@@ -16,15 +17,12 @@ var SearchModel = Backbone.Model.extend({
   catAllowed: { id: 'catAllowed', text: 'Cats' },
   dogAllowed: { id: 'dogAllowed', text: 'Dogs' },
   smokingAllowed: { id: 'smokingAllowed', text: 'Smoking' },
-
   initialize: function(){
     this.mapModel = new MapModel();
     this.mapView = new MapView({ model: this.mapModel});
     this.listings = new ListingCollection();
     this.mapViewTemplate = Handlebars.templates.mapView(this.mapModel);
-    _.bindAll(this, 'fetchListings', 'renderMap', 'setPoints', 'setPoint');
-    this.listenTo( this.mapModel, 'change', this.fetchListings);
-    this.listenTo( this.mapModel, '', this.fetchListings);
+    _.bindAll(this, 'fetchListings', 'renderMap', 'setPoints', 'setPoint', 'search');
   },
   fetchListings: function(){
     this.listings.fetch({
@@ -32,7 +30,7 @@ var SearchModel = Backbone.Model.extend({
     });
   },
   renderMap: function(){
-    this.mapView.renderMap();
+    $.when(this.mapView.renderMap()).then(this.fetchListings);
   },
   setPoints: function(){
     this.listings.each(this.setPoint);
@@ -52,12 +50,12 @@ var SearchModel = Backbone.Model.extend({
               break;
       case 2: marker = new google.maps.Marker({
                 position: new google.maps.LatLng(model.get('lat'), model.get('lon')),
-                icon: 'public/markers/red_MarkerB.png'
+                icon: 'public/markers/red_MarkerL.png'
                 }); 
               break;
       case 3: marker = new google.maps.Marker({
                 position: new google.maps.LatLng(model.get('lat'), model.get('lon')),
-                icon: 'public/markers/red_MarkerC.png'
+                icon: 'public/markers/red_MarkerS.png'
                 }); 
               break;
       case 4: marker = new google.maps.Marker({
@@ -67,12 +65,12 @@ var SearchModel = Backbone.Model.extend({
               break;
       case 5: marker = new google.maps.Marker({
                 position: new google.maps.LatLng(model.get('lat'), model.get('lon')),
-                icon: 'public/markers/blue_MarkerB.png'
+                icon: 'public/markers/blue_MarkerL.png'
                 }); 
               break;
       case 6: marker = new google.maps.Marker({
                 position: new google.maps.LatLng(model.get('lat'), model.get('lon')),
-                icon: 'public/markers/blue_MarkerC.png'
+                icon: 'public/markers/blue_MarkerS.png'
                 }); 
               break;
       default: marker.icon = 'public/markers/red_MarkerA.png';
@@ -81,6 +79,11 @@ var SearchModel = Backbone.Model.extend({
     marker.setMap(this.mapModel.get('map'));
     marker.model = model;
     model.set('marker', marker);
+    model.set('isOnMap', true);
     google.maps.event.addListener(marker, 'click', model.emitMarkerClick);
+  },
+  search: function(event){
+    //TODO
+    
   }
 })

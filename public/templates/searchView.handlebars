@@ -1,44 +1,79 @@
+<div class="row">
+  <div class="panel">
+    <div class="small-12 medium-6 large-6 columns">
 
-<div class="row panel">
-  <div class="small-6 medium-6 large-8 columns">
+    </div>
     <div class="small-12 medium-6 large-6 columns">
-      <label>{{priceLabel}}
-        <input id="{{priceFrom.id}}" type="number" placeholder="{{priceFrom.placeholder}}" />
-        <input id="{{priceTo.id}}" type="number" placeholder="{{priceTo.placeholder}}" />
-      </label>
 
-      <label>{{bedrooms.label}}
-        <input id="{{bedrooms.id}}" type="number" placeholder="{{bedrooms.placeholder}}" />
-      </label>
     </div>
     <div class="small-12 medium-6 large-6 columns">
-      <label>{{bathroomsLabel}}
-        <input id="{{fullBathrooms.id}}" type="number" placeholder="{{fullBathrooms.placeholder}}" />
-        <input id="{{halfBathrooms.id}}" type="number" placeholder="{{halfBathrooms.placeholder}}" />
-      </label>
-    </div>
-  </div>
-  <div class="small-6 medium-6 large-4 columns">
-    <div class="small-12 medium-6 large-6 columns">
-      <label>Allowed<br>
-        <input id="{{catAllowed.id}}" type="checkbox"><label for="{{catAllowed.id}}">{{catAllowed.text}}</label><br>
-        <input id="{{dogAllowed.id}}" type="checkbox"><label for="{{dogAllowed.id}}">{{dogAllowed.text}}</label><br>
-        <input id="{{smokingAllowed.id}}" type="checkbox"><label for="{{smokingAllowed.id}}">{{smokingAllowed.text}}</label>
-      </label>
+
     </div>
     <div class="small-12 medium-6 large-6 columns">
-      <label>Included<br>
-        <input id="{{garbageInc.id}}" type="checkbox"><label for="{{garbageInc.id}}">{{garbageInc.text}}</label><br>
-        <input id="{{heatInc.id}}" type="checkbox"><label for="{{heatInc.id}}">{{heatInc.text}}</label><br>
-        <input id="{{waterInc.id}}" type="checkbox"><label for="{{waterInc.id}}">{{waterInc.text}}</label><br>
-        <input id="{{electricInc.id}}" type="checkbox"><label for="{{electricInc.id}}">{{electricInc.text}}</label>
-      </label>
+
     </div>
   </div>
 </div>
 
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+      </section>
 
-{{{mapViewTemplate}}}
+      <section class="middle tab-bar-section">
+        <a class="title button" id="searchButton">Search</a>
+      </section>
+
+      <section class="right-small">
+        <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+      </section>
+    </nav>
+
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label>{{priceLabel}}</label></li>
+        <li><input id="{{priceFrom.id}}" type="number" placeholder="{{priceFrom.placeholder}}" /></li>
+        <li><input id="{{priceTo.id}}" type="number" placeholder="{{priceTo.placeholder}}" /></li>
+
+        <li><label>{{bedrooms.label}}</label></li>
+        <li><input id="{{bedrooms.id}}" type="number" placeholder="{{bedrooms.placeholder}}" /></li>
+
+        <li><label>{{bathroomsLabel}}</label></li>
+        <li><input id="{{fullBathrooms.id}}" type="number" placeholder="{{fullBathrooms.placeholder}}" /></li>
+        <li><input id="{{halfBathrooms.id}}" type="number" placeholder="{{halfBathrooms.placeholder}}" /></li>
+
+        <li><label>Included</label></li>
+        <li><label>{{heatInc.text}}<input type="checkbox" id="{{heatInc.id}}"></input></label></li>
+        <li><label>{{garbageInc.text}}<input type="checkbox" id="{{garbageInc.id}}"></input></label></li>
+        <li><label>{{waterInc.text}}<input type="checkbox" id="{{waterInc.id}}"></input></label></li>
+        <li><label>{{electricInc.text}}<input type="checkbox" id="{{electricInc.id}}"></input></label></li>
+        <li><label>{{garbageInc.text}}<input type="checkbox" id="{{garbageInc.id}}"></input></label></li>
+        
+        <li><label>Allowed</label></li>
+        <li><label>{{catAllowed.text}}<input type="checkbox" id="{{catAllowed.id}}"></input></label></li>
+        <li><label>{{dogAllowed.text}}<input type="checkbox" id="{{dofAllowed.id}}"></input></label></li>
+        <li><label>{{smokingAllowed.text}}<input type="checkbox" id="{{smokingAllowed.id}}"></input></label></li>
+      </ul>
+    </aside>
+
+    <aside class="right-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label>Listing Types</label></li>
+        <li><a href="#">Map</a></li>
+        <li><a href="#">List</a></li>
+      </ul>
+    </aside>
+
+    <section class="main-section">
+      {{{mapViewTemplate}}}
+    </section>
+
+  <a class="exit-off-canvas"></a>
+
+  </div>
+</div>
 
 <div class="row" id={{searchResultsID}}>
 </div>

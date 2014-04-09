@@ -13,7 +13,11 @@ exports.listing = mongoose.model('listing', new mongoose.Schema({
     type: Number,
     required: true
   },
-  postedBy: {
+  postedById: {
+    type: String,
+    required: true
+  },
+  postedByName: {
     type: String,
     required: true
   },
@@ -44,6 +48,11 @@ exports.listing = mongoose.model('listing', new mongoose.Schema({
     required: true
   },
   addrState: {
+    type: String,
+    required: true
+  },
+
+  contactEmail:{
     type: String,
     required: true
   },

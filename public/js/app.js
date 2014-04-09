@@ -31,7 +31,7 @@ var AppRouter = Backbone.Router.extend({
   showAccount: function(){
     this.accountModel.checkAuth({
       success: function(data, res){
-        $('#app').html(app.accountView.render().el); //XXX
+        $.when( $('#app').html(app.accountView.render().el)).then( $(document).foundation('reflow') ); //XXX
       },
       error: function(data, res){
         app.navigate('login', {trigger: true});
@@ -44,7 +44,7 @@ var AppRouter = Backbone.Router.extend({
   },
 
   showSearch: function(){
-    $.when($('#app').html(this.searchView.render().el)).then(this.searchModel.renderMap());
+    $.when( $('#app').html(this.searchView.render().el)).then( this.searchModel.renderMap() );
   },
 
   showCreate: function(){

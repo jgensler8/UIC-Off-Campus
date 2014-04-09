@@ -39,6 +39,7 @@ passport.use(
   },
   function(accessToken, refreshToken, profile, done){
     var toAdd = new accountSchema({
+      id: profile.id,
       netid: profile.username,
       firstName: profile.name.familyName,
       lastName: profile.name.givenName,
@@ -96,7 +97,17 @@ function ensureAuthenticated(req, res, next){
   return res.status(401).json({error:true});
 }
 app.get('/account*', ensureAuthenticated, function( req, res){
-  return res.json( req.user);
+  listingSchema.find({ postedById: req.user.id }, function(err,listings){
+    if(err){
+      req.user.listingSuccess = false;
+      return res.json( req.user);
+    }
+    else{
+      req.user.listings = listings;
+      req.user.linstingSuccess = true;
+      return res.json( req.user);
+    }
+  });
 });
 //will need more CRUD endpoints... maybe
 
@@ -104,7 +115,6 @@ app.get('/account*', ensureAuthenticated, function( req, res){
 
 /// *** listing routes ****
 app.get('/listing', function(req, res, next){
-  //listing.find('*');
   listingSchema.find(function(err, listings){
     if(err){
       console.log("ERROR QUERYING LISTINGS DATABASE");
@@ -113,16 +123,33 @@ app.get('/listing', function(req, res, next){
     else return res.json(listings);
   });
 });
+/*
+app.get('/listing/userdata', ensureAuthenticated, function(req, res, next){
+  listingSchema.find(function(err, listings){
+    if(err){
+      console.log("ERROR QUERYING LISTINGS DATABASE");
+      return res.status(200).json({error: true});
+    }
+    else return res.json(listings);
+  });
+});
+*/
 //create
-app.post('/listing', function(req, res, next){
+app.post('/listing', ensureAuthenticated, function(req, res, next){
   var userData = req.body;
 
-  //add insure authenticated
-  //TODO authenticate!
-  //and grab user info! 
-  //AND MAKE SURE TO HAVE SET LAT AND LON
-  //check that user doesn't have 10 adds etc
-  //user post date
+  listingSchema.find({ postedById: req.user.id }, function(err,listings){
+    if(err){
+      console.log("ERROR QUERYING LISTINGS DATABASE");
+      return res.status(200).json({error: true, type: 'DATABASE'});
+    }
+    else{
+      if(listings.length > 5){
+        return res.status(200).json({error: true, type: 'LIMIT'});
+      }
+    }
+  });
+
   var address = userData.addrLine + " " 
     + userData.addrAptNum + " "
     + userData.addrCity + " "
@@ -135,16 +162,26 @@ app.post('/listing', function(req, res, next){
       return res.status(200).json({error: true, type: 'GEOCODE'});
     }
     else{
+      console.log(data);
       if(data.status === 'ZERO_RESULTS'){
         console.log('ERROR GENERATING GEOCODE');
         return res.status(200).json({error: true, type: 'GEOCODE'});
       }
       var geolat = data.results[0].geometry.location.lat;
       var geolon = data.results[0].geometry.location.lng;
+      var date = new Date();
+      var hour = date.getHours();
+      hour = (hour < 10 ? "0" : "") + hour;
+      var year = date.getFullYear();
+      var month = date.getMonth() + 1;
+      month = (month < 10 ? "0" : "") + month;
+      var day  = date.getDate();
+      day = (day < 10 ? "0" : "") + day;
       var newListing = new listingSchema({
         listingType: parseInt(userData.listingType),
-        postedBy: userData.postedBy,
-        postDate: userData.postDate,
+        postedById: req.user.id,
+        postedByName: req.user.name.givenName,
+        postDate: year + '-' + month + '-' + day,
         availableFromDate: userData.availableFromDate,
         availableToDate: userData.availableToDate,
         addrLine: userData.addrLine,
@@ -152,6 +189,7 @@ app.post('/listing', function(req, res, next){
         addrCity: userData.addrCity,
         addrZip : parseInt(userData.addrZip),
         addrState: userData.addrState,
+        contactEmail: userData.contactEmail,
         lat: geolat,
         lon: geolon,
         price: parseInt(userData.price),
@@ -169,7 +207,6 @@ app.post('/listing', function(req, res, next){
         smokingAllowed: ('on' === userData.smokingAllowed) ? true : false,
       });
 
-      console.log( newListing);
       newListing.save(
         function(err){
           if(err){
@@ -179,11 +216,10 @@ app.post('/listing', function(req, res, next){
           }
           else{
             newListing.error = false;
-            return res.status(200).json(newListing);
+            return res.status(200).json({error: false, type: 'SUCCESS'});
           }
         }
       );
-
     }
   }); //end geocode
 
@@ -194,11 +230,13 @@ app.get('/listing/:id', function(req, res, next){
 });
 //update
 app.put('/listing/:id', function(req, res, next){
-
+  console.log(req.body);
+  return res.json({success:true});
 });
 //delete
 app.delete('/listing/:id', function(req, res, next){
-
+  console.log(req.body);
+  return res.json({success:true});
 });
 //create a listing
 function createListing(queryResponse, req, res, next, userData){

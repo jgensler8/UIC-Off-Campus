@@ -1,10 +1,52 @@
-<div class="row">
-  <div class="small-2 large-4 columns">
+<div class="row panel">
+  <div class="small-6 large-6 columns">
     <a class="th [radius]" href="#">
       <img src="http://graph.facebook.com/{{username}}/picture">
     </a>
   </div>
-  <div class="small-4 large-4 columns">
-    {{displayName}}
+  <div class="small-6 large-6 columns">
+    <h3>{{displayName}}</h3>
   </div>
+</div>
+
+
+<div class="row">
+  <fieldset>
+    <legend>Your Listings</legend>
+
+
+    {{#each listings}}
+    <div class="row panel">
+        <div class="small-12 large-12 columns">
+
+          <div class="small-12 medium-6 large-6 columns">
+            <h4>{{addrLine}} {{addrAptNum}} {{addrCity}} {{addrState}} {{addrZip}}</h4>
+          </div>
+
+          <div class="small-12 medium-6 large-6 columns">
+            <ul class="button-group">
+              <li><a class="button" type="editReveal" id="{{_id}}">Edit</a></li>
+              <li><a class="button" type="deleteReveal" id="{{_id}}">Delete</a></li>
+            </ul>
+          </div>
+
+        </div>
+    </div>
+
+    <div id="edit{{_id}}" class="reveal-modal" data-reveal>
+      <div id="template{{_id}}"></div>
+      <a class="button" type="editSubmit" id="{{_id}}">Submit</a> <a class="button">Cancel</a>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+    <div id="delete{{_id}}" class="reveal-modal" data-reveal>
+      <p class="lead">Are you sure you want to delete?</p>
+      <a class="button" type="deleteSubmit" id="{{_id}}">Delete</a> <a class="button">Cancel</a>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+    {{/each}}
+
+
+  </fieldset>
 </div>
