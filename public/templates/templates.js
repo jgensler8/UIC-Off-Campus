@@ -258,7 +258,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.smokingAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "<input type=\"checkbox\" id=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.smokingAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\"></input></label></li>\n      </ul>\n    </aside>\n\n    <aside class=\"right-off-canvas-menu\">\n      <ul class=\"off-canvas-list\">\n        <li><label>Listing Types</label></li>\n        <li><a href=\"#search\" id=\"showAsMap\">Map</a></li>\n        <li><a href=\"#search\" id=\"showApptList\">Appt. List</a></li>\n        <li><a href=\"#search\" id=\"showSocialList\">Social List</a></li>\n      </ul>\n    </aside>\n\n    <section class=\"main-section\" id=\"main-section\" style=\"height:400px\">\n      ";
+    + "\"></input></label></li>\n      </ul>\n    </aside>\n\n    <aside class=\"right-off-canvas-menu\">\n      <ul class=\"off-canvas-list\">\n        <li><label>Listing Types</label></li>\n        <li><a href=\"#search\" id=\"showAsMap\">Map</a></li>\n        <li><a href=\"#search\" id=\"showAptList\">Apt. List</a></li>\n        <li><a href=\"#search\" id=\"showSocialList\">Social List</a></li>\n      </ul>\n    </aside>\n\n    <section class=\"main-section\" id=\"main-section\" style=\"height:400px\">\n      ";
   if (helper = helpers.mapViewTemplate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.mapViewTemplate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   if(stack1 || stack1 === 0) { buffer += stack1; }
@@ -702,42 +702,56 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 templates['searchView_apptList'] = template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
+  var stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
-  var buffer = "", stack1, helper;
-  buffer += "\n  <li>";
-  if (helper = helpers.price) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.price); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + " ";
-  if (helper = helpers.bathrooms) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.bathrooms); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + " ";
-  if (helper = helpers.apptLine) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.apptLine); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "</li>\n";
+  var buffer = "", stack1;
+  buffer += "\n  <div class=\"small-6 medium-4 large-3 columns\">\n    <ul class=\"pricing-table\">\n      <li class=\"title\">"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.addrLine)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</li>\n      <li class=\"price\">$"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.price)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</li>\n      <li class=\"bullet-item\">Bedrooms: "
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.bedrooms)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</li>\n      <li class=\"bullet-item\">Bathrooms: "
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.fullBathrooms)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + " + "
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.halfBathrooms)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</li>\n      <li class=\"cta-button\"><a class=\"button\" href=\"#\">More Info</a></li>\n    </ul>\n  </div>\n";
   return buffer;
   }
 
-  buffer += "<ul>\n";
-  stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.listings), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n</ul>";
-  return buffer;
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.listings), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { return stack1; }
+  else { return ''; }
   });
 templates['searchView_socialList'] = template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var stack1, self=this;
+  var stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
+  var buffer = "", stack1;
+  buffer += "\n  <div class=\"small-6 medium-4 large-3 columns\">\n    <ul class=\"pricing-table\">\n      <li class=\"title\">"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.addrLine)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</li>\n      <li class=\"price\">$"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.price)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</li>\n      <li class=\"bullet-item\">"
+    + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.postedByName)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + " is interested in:</li>\n\n      ";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.likes), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n\n      <li class=\"cta-button\"><a class=\"button\" href=\"#\">Contact</a></li>\n    </ul>\n  </div>\n";
+  return buffer;
+  }
+function program2(depth0,data) {
   
-  return "\n\n";
+  var buffer = "", stack1;
+  buffer += "\n        <li class=\"bullet-item\">"
+    + escapeExpression(((stack1 = (depth0 && depth0.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</li>\n      ";
+  return buffer;
   }
 
   stack1 = helpers.each.call(depth0, (depth0 && depth0.listings), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});

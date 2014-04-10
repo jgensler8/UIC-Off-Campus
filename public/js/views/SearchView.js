@@ -1,12 +1,12 @@
 var SearchView = Backbone.View.extend({
   initialize: function(){
-    _.bindAll(this, 'render', 'renderSelection', 'search', 'showAsMap', 'showApptList', 'showSocialList');
+    _.bindAll(this, 'render', 'renderSelection', 'search', 'showAsMap', 'showAptList', 'showSocialList');
     this.listenTo( this.model.listings, 'markerClicked', this.renderSelection);
   },
   events: {
     'click [id="searchButton"]': 'search',
     'click [id="showAsMap"]': 'showAsMap',
-    'click [id="showApptList"]': 'showApptList',
+    'click [id="showAptList"]': 'showAptList',
     'click [id="showSocialList"]': 'showSocialList',
   },
   render: function(){
@@ -18,7 +18,7 @@ var SearchView = Backbone.View.extend({
     
     $('#'+this.model.searchResultsID).html( Handlebars.templates.listingViewComplete(item.attributes) );
     $(document).foundation('reflow');
-    $('#mapListingModal'+event.target.id).foundation('reveal','open');
+    $('#mapListingModal').foundation('reveal','open');
   },
   search: function(){
     this.model.search();
@@ -26,10 +26,10 @@ var SearchView = Backbone.View.extend({
   showAsMap: function(){
     $.when( $('#main-section').html(this.model.mapViewTemplate) ).then( this.model.renderMap() );
   },
-  showApptList: function(){
-    $('#main-section').html( Handlebars.templates.searchView_apptList(this.model.listings) );
+  showAptList: function(){
+    $('#main-section').html( Handlebars.templates.searchView_apptList( { listings: this.model.listings.models} ) );
   },
   showSocialList: function(){
-    $('#main-section').html( Handlebars.templates.searchView_socialList(this.model.listings) );
+    $('#main-section').html( Handlebars.templates.searchView_socialList( { listings: this.model.listings.models}) );
   }
 })

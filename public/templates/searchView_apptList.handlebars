@@ -1,5 +1,11 @@
-<ul>
-{{#each attributes.listings}}
-  <li>{{price}} {{bathrooms}} {{apptLine}}</li>
+{{#each listings}}
+  <div class="small-6 medium-4 large-3 columns">
+    <ul class="pricing-table">
+      <li class="title">{{this.attributes.addrLine}}</li>
+      <li class="price">${{this.attributes.price}}</li>
+      <li class="bullet-item">Bedrooms: {{this.attributes.bedrooms}}</li>
+      <li class="bullet-item">Bathrooms: {{this.attributes.fullBathrooms}} + {{this.attributes.halfBathrooms}}</li>
+      <li class="cta-button"><a class="button" href="#">More Info</a></li>
+    </ul>
+  </div>
 {{/each}}
-</ul>

@@ -285,8 +285,27 @@ function createListing(queryResponse, req, res, next, userData){
 
 
 /// *** facebook likes endpoint ***
-app.get('/likes', ensureAuthenticated, function( req, res, next){
-  return res.json({likes: 'stuff'});
+app.get('/likes/:userId', ensureAuthenticated, function( req, res, next){
+  console.log(req.params.userId);
+
+  var request = http.request( {
+    type: 'GET',
+    url: 'http://graph.facebook.com/' + req.params.userId + '/likes',
+  }, function(response){
+    var body = "";
+    response.on('data', function(){
+      body += data;
+    });
+    response.on('end', function(){
+      return res.json( JSON.parse(body) );
+    });
+  });
+
+  request.on('error', function(){
+    return res.json( {error: true, type: 'FACEBOOK'});
+  })
+
+  request.end();
 });
 
 http.createServer(app).listen(app.get('port'), function(){

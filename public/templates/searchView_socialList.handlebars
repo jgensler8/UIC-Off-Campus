@@ -1,3 +1,15 @@
 {{#each listings}}
+  <div class="small-6 medium-4 large-3 columns">
+    <ul class="pricing-table">
+      <li class="title">{{this.attributes.addrLine}}</li>
+      <li class="price">${{this.attributes.price}}</li>
+      <li class="bullet-item">{{this.attributes.postedByName}} is interested in:</li>
 
+      {{#each this.likes}}
+        <li class="bullet-item">{{this.name}}</li>
+      {{/each}}
+
+      <li class="cta-button"><a class="button" href="#">Contact</a></li>
+    </ul>
+  </div>
 {{/each}}
