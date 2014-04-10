@@ -1,16 +1,16 @@
 <div class="panel callout radius">
-  <div class="row text-center"><h1>{{title}}</h1></div>
+  <div class="row text-center"><h4>{{title}}</h4></div>
 
   <div class="row text-center">
     <div class="small-12 medium-6 large-6 columns">
-      <h3>{{howTo.title}}</h3>
+      {{howTo.title}}
       {{#each howTo.howTos}}
       <span data-tooltip class="has-tip row" title="{{response}}">{{title}}</span><br>
       {{/each}}
     </div>
 
     <div class="small-12 medium-6 large-6 columns">
-      <h3>{{faq.title}}</h3>
+      {{faq.title}}
       {{#each faq.faqs}}
       <span data-tooltip class="has-tip row" title="{{response}}">{{title}}</span><br>
       {{/each}}

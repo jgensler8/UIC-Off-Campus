@@ -4,15 +4,16 @@ var HelpView = Backbone.View.extend({
     howTo: {
       title: 'How to:',
       howTos:
-        [ {id: 1, title: 'How to log in', response: 'Go to the login section and click a thing'},
-          {id: 2, title: 'How to host an add', response: 'Navigate to the "Create" tab and fill out the listing there. You must be logged in to create a listing'} ]
+        [ {id: 1, title: 'How to log in', response: 'Click Account and sign in with facebook'},
+          {id: 2, title: 'How to host an ad', response: 'Navigate to the "Create" tab and fill out the listing there. You must be logged in to create a listing'} ]
     },
     faq:{
       title: 'Frequently asked questions:',
       faqs:
-        [ { id: 1, title: 'How long is an add posting available?', response: '3 months'},
+        [ { id: 1, title: 'How long is an add posting available?', response: 'Unlimited for now. Will change soon to be 3 months'},
           { id: 2, title: 'How can I take a listing down?', response: 'Go to account and select the listing you wish to delete'},
-          { id: 3, title: 'Is my Facebook information visible to the public?', response: 'The short answer is yes. See our privacy policy section for more details'} ]
+          { id: 3, title: 'Is my Facebook information visible to the public?', response: 'The short answer is yes. See our privacy policy section for more details'},
+          { id: 3, title: 'How do I disconnect my Facebook from Social Living at UIC?', response: 'Settings > Apps. Then scroll until you find Social Living at UIC and remove permissions'} ]
     }
   },
   render: function(){

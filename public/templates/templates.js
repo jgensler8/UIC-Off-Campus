@@ -60,18 +60,18 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  buffer += "<div class=\"panel callout radius\">\n  <div class=\"row text-center\"><h1>";
+  buffer += "<div class=\"panel callout radius\">\n  <div class=\"row text-center\"><h4>";
   if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</h1></div>\n\n  <div class=\"row text-center\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <h3>"
+    + "</h4></div>\n\n  <div class=\"row text-center\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n      "
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.howTo)),stack1 == null || stack1 === false ? stack1 : stack1.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</h3>\n      ";
+    + "\n      ";
   stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.howTo)),stack1 == null || stack1 === false ? stack1 : stack1.howTos), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n    </div>\n\n    <div class=\"small-12 medium-6 large-6 columns\">\n      <h3>"
+  buffer += "\n    </div>\n\n    <div class=\"small-12 medium-6 large-6 columns\">\n      "
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.faq)),stack1 == null || stack1 === false ? stack1 : stack1.title)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "</h3>\n      ";
+    + "\n      ";
   stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.faq)),stack1 == null || stack1 === false ? stack1 : stack1.faqs), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    </div>\n  </div>\n</div>";
@@ -196,7 +196,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"row\">\n  <div class=\"panel\">\n    <div class=\"small-12 medium-6 large-6 columns\">\n\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n\n    </div>\n    <div class=\"small-12 medium-6 large-6 columns\">\n\n    </div>\n  </div>\n</div>\n\n<div class=\"off-canvas-wrap\" data-offcanvas>\n  <div class=\"inner-wrap\">\n    <nav class=\"tab-bar\">\n      <section class=\"left-small\">\n        <a class=\"left-off-canvas-toggle menu-icon\" ><span></span></a>\n      </section>\n\n      <section class=\"middle tab-bar-section\">\n        <a class=\"title button\" id=\"searchButton\">Search</a>\n      </section>\n\n      <section class=\"right-small\">\n        <a class=\"right-off-canvas-toggle menu-icon\" ><span></span></a>\n      </section>\n    </nav>\n\n    <aside class=\"left-off-canvas-menu\">\n      <ul class=\"off-canvas-list\">\n        <li><label>";
+  buffer += "<div class=\"row\">\n  <div class=\"panel\">\n    <ul class=\"small-block-grid-1 medium-block-grid-3 large-block-grid-3 text-center\">\n      <li>Full Apartment, Rented: <img src=\"public/markers/red_MarkerA.png\"></li>\n      <li>Room, Short Term, Rented: <img src=\"public/markers/red_MarkerS.png\"></li>\n      <li>Room, Long Term, Rented: <img src=\"public/markers/red_MarkerL.png\"></li>\n    </ul>\n    <ul class=\"small-block-grid-1 medium-block-grid-3 large-block-grid-3 text-center\">\n      <li>Full Apartment, Wanted: <img src=\"public/markers/blue_MarkerA.png\"></li>\n      <li>Room, Short Term, Wanted: <img src=\"public/markers/blue_MarkerS.png\"></li>\n      <li>Room, Long Term, Wanted: <img src=\"public/markers/blue_MarkerL.png\"></li>\n    </ul>\n  </div>\n</div>\n\n<div class=\"off-canvas-wrap\" data-offcanvas>\n  <div class=\"inner-wrap\">\n    <nav class=\"tab-bar\">\n      <section class=\"left-small\">\n        <a class=\"left-off-canvas-toggle menu-icon\" ><span></span></a>\n      </section>\n\n      <section class=\"middle tab-bar-section\">\n        <a class=\"title button\" id=\"searchButton\">Search</a>\n      </section>\n\n      <section class=\"right-small\">\n        <a class=\"right-off-canvas-toggle menu-icon\" ><span></span></a>\n      </section>\n    </nav>\n\n    <aside class=\"left-off-canvas-menu\">\n      <ul class=\"off-canvas-list\">\n        <li><label>";
   if (helper = helpers.priceLabel) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.priceLabel); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -262,11 +262,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.mapViewTemplate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.mapViewTemplate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n    </section>\n\n  <a class=\"exit-off-canvas\"></a>\n\n  </div>\n</div>\n\n<!---\n<div class=\"row\" id=\"";
-  if (helper = helpers.searchResultsID) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.searchResultsID); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\">\n</div>\n--->\n\n<div id=\"mapListingModal\" class=\"reveal-modal\" data-reveal>\n  <div id=\"";
+  buffer += "\n    </section>\n\n  <a class=\"exit-off-canvas\"></a>\n\n  </div>\n</div>\n\n<div id=\"mapListingModal\" class=\"reveal-modal\" data-reveal>\n  <div id=\"";
   if (helper = helpers.searchResultsID) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.searchResultsID); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)

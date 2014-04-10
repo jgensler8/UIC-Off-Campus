@@ -58,22 +58,21 @@ var SearchModel = Backbone.Model.extend({
                 icon: 'public/markers/red_MarkerS.png'
                 }); 
               break;
-      case 4: marker = new google.maps.Marker({
+      case 51: marker = new google.maps.Marker({
                 position: new google.maps.LatLng(model.get('lat'), model.get('lon')),
                 icon: 'public/markers/blue_MarkerA.png'
                 }); 
               break;
-      case 5: marker = new google.maps.Marker({
+      case 52: marker = new google.maps.Marker({
                 position: new google.maps.LatLng(model.get('lat'), model.get('lon')),
                 icon: 'public/markers/blue_MarkerL.png'
                 }); 
               break;
-      case 6: marker = new google.maps.Marker({
+      case 53: marker = new google.maps.Marker({
                 position: new google.maps.LatLng(model.get('lat'), model.get('lon')),
                 icon: 'public/markers/blue_MarkerS.png'
                 }); 
               break;
-      default: marker.icon = 'public/markers/red_MarkerA.png';
     };
     
     marker.setMap(this.mapModel.get('map'));
