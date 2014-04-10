@@ -1,5 +1,5 @@
 var AccountModel = Backbone.Model.extend({
-  urlRoot: '/account',
+  urlRoot: 'account',
   initialize: function(){
     _.bindAll(this, 'checkAuth');
     this.fetch();

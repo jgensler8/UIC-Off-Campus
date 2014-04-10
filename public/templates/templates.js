@@ -258,15 +258,19 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.smokingAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.text)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "<input type=\"checkbox\" id=\""
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.smokingAllowed)),stack1 == null || stack1 === false ? stack1 : stack1.id)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "\"></input></label></li>\n      </ul>\n    </aside>\n\n    <aside class=\"right-off-canvas-menu\">\n      <ul class=\"off-canvas-list\">\n        <li><label>Listing Types</label></li>\n        <li><a href=\"#\">Map</a></li>\n        <li><a href=\"#\">List</a></li>\n      </ul>\n    </aside>\n\n    <section class=\"main-section\">\n      ";
+    + "\"></input></label></li>\n      </ul>\n    </aside>\n\n    <aside class=\"right-off-canvas-menu\">\n      <ul class=\"off-canvas-list\">\n        <li><label>Listing Types</label></li>\n        <li><a href=\"#search\" id=\"showAsMap\">Map</a></li>\n        <li><a href=\"#search\" id=\"showApptList\">Appt. List</a></li>\n        <li><a href=\"#search\" id=\"showSocialList\">Social List</a></li>\n      </ul>\n    </aside>\n\n    <section class=\"main-section\" id=\"main-section\" style=\"height:400px\">\n      ";
   if (helper = helpers.mapViewTemplate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.mapViewTemplate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n    </section>\n\n  <a class=\"exit-off-canvas\"></a>\n\n  </div>\n</div>\n\n<div class=\"row\" id=";
+  buffer += "\n    </section>\n\n  <a class=\"exit-off-canvas\"></a>\n\n  </div>\n</div>\n\n<!---\n<div class=\"row\" id=\"";
   if (helper = helpers.searchResultsID) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.searchResultsID); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + ">\n</div>";
+    + "\">\n</div>\n--->\n\n<div id=\"mapListingModal\" class=\"reveal-modal\" data-reveal>\n  <div id=\"";
+  if (helper = helpers.searchResultsID) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.searchResultsID); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\"> </div>\n  <a class=\"close-reveal-modal\">&#215;</a>\n</div>";
   return buffer;
   });
 templates['listingViewForm'] = template(function (Handlebars,depth0,helpers,partials,data) {
@@ -539,5 +543,209 @@ function program17(depth0,data) {
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n  </ul>\n\n  <a class=\"close-reveal-modal\">&#215;</a>\n</div>";
   return buffer;
+  });
+templates['listingViewComplete'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "<li class=\"bullet-item\">Square Feet: ";
+  if (helper = helpers.sqaureFeet) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.sqaureFeet); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</li>";
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Heat Included</li>";
+  }
+
+function program5(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Water Included</li>";
+  }
+
+function program7(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Garbage Included</li>";
+  }
+
+function program9(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Electricity Included</li>";
+  }
+
+function program11(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Internet Included</li>";
+  }
+
+function program13(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Dogs Allowed</li>";
+  }
+
+function program15(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Cats Allowed</li>";
+  }
+
+function program17(depth0,data) {
+  
+  
+  return "<li class=\"bullet-item\">Smoking Allowed</li>";
+  }
+
+  buffer += "<div class=\"row\">\n  <div class=\"small-12 medium-12 large-12 columns\">\n    <ul class=\"pricing-table\">\n      <li class=\"title\">At a Glance</li>\n      <li class=\"price\">$";
+  if (helper = helpers.price) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.price); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</li>\n      <li class=\"bullet-item\">Bedrooms: ";
+  if (helper = helpers.bedrooms) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.bedrooms); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</li>\n      <li class=\"bullet-item\">Bathrooms: ";
+  if (helper = helpers.fullBathrooms) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.fullBathrooms); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " full and ";
+  if (helper = helpers.halfBathrooms) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.halfBathrooms); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " half</li>\n      <li class=\"cta-button\"><a class=\"button\" href=\"#\">Contact ";
+  if (helper = helpers.postedByName) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.postedByName); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</a> <a class=\"button\" href=\"#\">More Information</a></li>\n    </ul>\n  </div>\n\n<!---\n  <div class=\"small-12 medium-6 large-6 columns\">\n    <div class=\"row\">\n      <fieldset>\n        ";
+  if (helper = helpers.availableFromDate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.availableFromDate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\n        ";
+  if (helper = helpers.availableToDate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.availableToDate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\n      </fieldset>\n    </div>\n\n    <div class=\"row\">\n      <div class=\"small-12 medium-12 large-12 columns text-centered\">\n        <ul class=\"vcard text-centered\">\n          <li class=\"street-address\">";
+  if (helper = helpers.addrLine) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrLine); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</li>\n          <li class=\"locality\">";
+  if (helper = helpers.addrCity) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrCity); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</li>\n          <li><span class=\"state\">";
+  if (helper = helpers.addrState) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrState); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</span>, <span class=\"zip\">";
+  if (helper = helpers.addrZip) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.addrZip); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</span></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  ---->\n  \n</div>\n\n<div id=\"MoreInfoModal\" class=\"reveal-modal\" data-reveal>\n  <p class=\"lead\">Full listing:</p>\n  <ul class=\"pricing-table\">\n    <li class=\"bullet-item\">Available From: ";
+  if (helper = helpers.availableFromDate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.availableFromDate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</li>\n    <li class=\"bullet-item\">Available To: ";
+  if (helper = helpers.availableToDate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.availableToDate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</li>\n    <li class=\"bullet-item\"></li>\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.squareFeet), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.heatInc), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.waterInc), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.garbageInc), {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.electricInc), {hash:{},inverse:self.noop,fn:self.program(9, program9, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.internetInc), {hash:{},inverse:self.noop,fn:self.program(11, program11, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.dogAllowed), {hash:{},inverse:self.noop,fn:self.program(13, program13, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.catAllowed), {hash:{},inverse:self.noop,fn:self.program(15, program15, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n    ";
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.smokingAllowed), {hash:{},inverse:self.noop,fn:self.program(17, program17, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n  </ul>\n\n  <a class=\"close-reveal-modal\">&#215;</a>\n</div>";
+  return buffer;
+  });
+templates['privacyPolicy'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div class=\"row\">\n  <div class=\"panel\">\n    <div class=\"small-12 medium-12 large-12\">\n      <h3>Privacy Policy</h3>\n      <p>\n        <ul>\n          <li>Here at Social Living at UIC, we use session based tracking to validate our users. That means that you and only you will have access to your account and listings. We will never share your information with other companies.</li>\n          <li>We use your Facebook profile for two things: Login Credentials and your likes. This way, we will never jepordize your passwords as they will be maintained by Facebook. Your likes will be able to be seen by other users but ONLY if you have an apartment and are hosting a listing that needs to fill a room OR ANY listing where you are trying to find an apartment rather than a </li>\n          <li>Your profile picture will only be visible to you. This isn't entirely necessary for the function of the application, but we think that it provides a more unique user experience!</li>\n          <li>At Social Living at UIC, your privacy is important to us and if you feel that our services do not meet your level of privacy, we would love to know how to enrich our service</li>\n          <li>Any questions can be sent to: ";
+  if (helper = helpers.contactEmail) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.contactEmail); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</li>\n        </ul>\n      </o>\n    </div>\n  </div>\n</div>";
+  return buffer;
+  });
+templates['searchView_apptList'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\n  <li>";
+  if (helper = helpers.price) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.price); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (helper = helpers.bathrooms) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.bathrooms); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (helper = helpers.apptLine) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.apptLine); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</li>\n";
+  return buffer;
+  }
+
+  buffer += "<ul>\n";
+  stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.listings), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n</ul>";
+  return buffer;
+  });
+templates['searchView_socialList'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var stack1, self=this;
+
+function program1(depth0,data) {
+  
+  
+  return "\n\n";
+  }
+
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.listings), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { return stack1; }
+  else { return ''; }
   });
 })();

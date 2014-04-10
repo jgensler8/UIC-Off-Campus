@@ -55,7 +55,7 @@ passport.use(
 //init app
 var app = express();
 // all environments
-app.set('port', argv.port || 3000);
+app.set('port', argv.port || 8000);
 app.set('view engine', 'hbs');
 app.use(express.logger('dev'));
 app.use(express.json());

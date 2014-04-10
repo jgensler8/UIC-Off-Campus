@@ -61,12 +61,13 @@
     <aside class="right-off-canvas-menu">
       <ul class="off-canvas-list">
         <li><label>Listing Types</label></li>
-        <li><a href="#">Map</a></li>
-        <li><a href="#">List</a></li>
+        <li><a href="#search" id="showAsMap">Map</a></li>
+        <li><a href="#search" id="showApptList">Appt. List</a></li>
+        <li><a href="#search" id="showSocialList">Social List</a></li>
       </ul>
     </aside>
 
-    <section class="main-section">
+    <section class="main-section" id="main-section" style="height:400px">
       {{{mapViewTemplate}}}
     </section>
 
@@ -75,5 +76,7 @@
   </div>
 </div>
 
-<div class="row" id={{searchResultsID}}>
+<div id="mapListingModal" class="reveal-modal" data-reveal>
+  <div id="{{searchResultsID}}"> </div>
+  <a class="close-reveal-modal">&#215;</a>
 </div>

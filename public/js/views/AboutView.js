@@ -1,8 +1,8 @@
 var AboutView = Backbone.View.extend({
   options: {
-    title: 'Welcome to UIC Off-Campus Housing!',
-    paragraphs: [ { text: 'UIC Social Living is a place to find apartments with people that share the same interests as you!'},
-                  { text: 'Integrating with a Facebook profile, UIC Social Living can create the most accurate matches.'}],
+    title: 'Welcome to Social Living at UIC!',
+    paragraphs: [ { text: 'Social Living at UIC is a place to find apartments with people that share the same interests as you!'},
+                  { text: 'Integrating with a Facebook profile, Social Living at UIC can create the most accurate matches.'}],
     card: {
       name: 'Commuter Student Resource Center',
       phone: '312-413-7440',

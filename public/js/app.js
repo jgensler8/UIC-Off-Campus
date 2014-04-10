@@ -5,7 +5,8 @@ var AppRouter = Backbone.Router.extend({
     'account': 'showAccount',
     'help': 'showHelp',
     'search': 'showSearch',
-    'create': 'showCreate'
+    'create': 'showCreate',
+    'privacypolicy': 'showPrivacyPolicy'
   },
 
   initialize: function(){
@@ -18,6 +19,7 @@ var AppRouter = Backbone.Router.extend({
     this.helpView = new HelpView();
     this.accountModel = new AccountModel();
     this.accountView = new AccountView({ model: this.accountModel });
+    this.privacyView = new PrivacyPolicyView();
   },
 
   showAbout: function(){
@@ -56,6 +58,10 @@ var AppRouter = Backbone.Router.extend({
         app.navigate('login', {trigger: true});
       }
     });
+  },
+
+  showPrivacyPolicy: function(){
+    $('#app').html( this.privacyView.render().el );
   }
 
 });
