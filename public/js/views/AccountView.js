@@ -28,7 +28,7 @@ var AccountView = Backbone.View.extend({
     console.log(event);
     $.ajax({
       type: 'PUT',
-      url: '/listing/' + event.target.id,
+      url: 'listing/' + event.target.id,
       data: '',
       success: function(){
         console.log("success edit");
@@ -39,7 +39,7 @@ var AccountView = Backbone.View.extend({
     });
   },
   deleteReveal: function(event){
-    $(document).foundation('reflow');
+    $(document).foundation('reflow'); 
     $('#delete'+event.target.id).foundation('reveal','open');
     $(document).foundation('reflow');
   },
@@ -47,7 +47,7 @@ var AccountView = Backbone.View.extend({
     console.log(event);
     $.ajax({
       type: 'DELETE',
-      url: '/listing/' + event.target.id,
+      url: 'listing/' + event.target.id,
       success: function(){
         console.log("success delete");
       },
@@ -59,9 +59,9 @@ var AccountView = Backbone.View.extend({
   logout: function(){
     $.ajax({
       type: 'POST',
-      url: '/logout',
+      url: 'logout',
       success: function(){
-        app.redirect('#');
+        //ap;p.redirect('#');
       },
     })
   }

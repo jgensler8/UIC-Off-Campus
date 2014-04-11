@@ -137,15 +137,15 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  buffer += "<div class=\"row panel\">\n  <div class=\"small-6 large-6 columns\">\n    <a class=\"th [radius]\" href=\"#\">\n      <img src=\"http://graph.facebook.com/";
+  buffer += "<div class=\"row panel\">\n  <div class=\"small-4 large-4 columns\">\n    <a class=\"th [radius]\">\n      <img src=\"http://graph.facebook.com/";
   if (helper = helpers.username) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.username); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "/picture\">\n    </a>\n  </div>\n  <div class=\"small-6 large-6 columns\">\n    <h3>";
+    + "/picture\">\n    </a>\n  </div>\n  <div class=\"small-4 large-4 columns\">\n    <h3>";
   if (helper = helpers.displayName) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.displayName); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</h3>\n  </div>\n</div>\n\n\n<div class=\"row\">\n  <fieldset>\n    <legend>Your Listings</legend>\n\n\n    ";
+    + "</h3>\n  </div>\n  <div class=\"small-4 large-4 columns\">\n    <a class=\"button\" id=\"logout\">Logout</a>\n  </div>\n</div>\n\n\n<div class=\"row\">\n  <fieldset>\n    <legend>Your Listings</legend>\n\n\n    ";
   stack1 = helpers.each.call(depth0, (depth0 && depth0.listings), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n\n\n  </fieldset>\n</div>\n";
