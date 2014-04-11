@@ -9,7 +9,8 @@ var AccountView = Backbone.View.extend({
     'click [type="editReveal"]': this.editReveal,
     'click [type="editSubmit"]': 'editSubmit',
     'click [type="deleteReveal"]': 'deleteReveal',
-    'click [type="deleteSubmit"]': 'deleteSubmit'
+    'click [type="deleteSubmit"]': 'deleteSubmit',
+    'click [id="logout"]': 'logout',
   },
   attributesChanged: function(){
     //TODO maybe?
@@ -54,5 +55,14 @@ var AccountView = Backbone.View.extend({
         console.log("error with ajax");
       }
     });
+  },
+  logout: function(){
+    $.ajax({
+      type: 'POST',
+      url: '/logout',
+      success: function(){
+        app.redirect('#');
+      },
+    })
   }
 });

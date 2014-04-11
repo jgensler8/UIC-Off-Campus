@@ -109,6 +109,10 @@ app.get('/account*', ensureAuthenticated, function( req, res){
     }
   });
 });
+app.post('/logout', ensureAuthenticated, function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 /// *** listing routes ****
 app.get('/listing', function(req, res, next){
