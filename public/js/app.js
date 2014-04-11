@@ -52,7 +52,10 @@ var AppRouter = Backbone.Router.extend({
   showCreate: function(){
     this.accountModel.checkAuth({
       success: function(data, res){
-        $('#app').html(app.createListingView.renderForm().el); //XXX
+        FB.api('/me/likes', 'get', function(response){
+          $.when( app.createListingModel.set('likes', response.data) )
+          .then( $('#app').html(app.createListingView.renderForm().el) ); //XXX
+        });
       },
       error: function(data, res){
         app.navigate('login', {trigger: true});

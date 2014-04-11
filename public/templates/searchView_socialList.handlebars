@@ -4,9 +4,10 @@
       <li class="title">{{this.attributes.addrLine}}</li>
       <li class="price">${{this.attributes.price}}</li>
       <li class="bullet-item">{{this.attributes.postedByName}} is interested in:</li>
+      <li>{{this.likes}}</li>
 
-      {{#each this.likes}}
-        <li class="bullet-item">{{this.name}}</li>
+      {{#each this.attributes.likes}}
+        <li class="bullet-item">{{this}}</li>
       {{/each}}
 
       <li class="cta-button"><a class="button" href="#">Contact</a></li>

@@ -35,7 +35,7 @@ passport.use(
   new FacebookStrategy({
     clientID: FacebookOptions.appId,
     clientSecret: FacebookOptions.appSecret,
-    callbackURL: 'http://localhost:3000/auth/facebook/callback'
+    callbackURL: 'http://localhost:8000/auth/facebook/callback'
   },
   function(accessToken, refreshToken, profile, done){
     var toAdd = new accountSchema({
@@ -109,9 +109,6 @@ app.get('/account*', ensureAuthenticated, function( req, res){
     }
   });
 });
-//will need more CRUD endpoints... maybe
-
-
 
 /// *** listing routes ****
 app.get('/listing', function(req, res, next){
@@ -123,17 +120,6 @@ app.get('/listing', function(req, res, next){
     else return res.json(listings);
   });
 });
-/*
-app.get('/listing/userdata', ensureAuthenticated, function(req, res, next){
-  listingSchema.find(function(err, listings){
-    if(err){
-      console.log("ERROR QUERYING LISTINGS DATABASE");
-      return res.status(200).json({error: true});
-    }
-    else return res.json(listings);
-  });
-});
-*/
 //create
 app.post('/listing', ensureAuthenticated, function(req, res, next){
   var userData = req.body;
@@ -162,7 +148,6 @@ app.post('/listing', ensureAuthenticated, function(req, res, next){
       return res.status(200).json({error: true, type: 'GEOCODE'});
     }
     else{
-      console.log(data);
       if(data.status === 'ZERO_RESULTS'){
         console.log('ERROR GENERATING GEOCODE');
         return res.status(200).json({error: true, type: 'GEOCODE'});
@@ -177,6 +162,14 @@ app.post('/listing', ensureAuthenticated, function(req, res, next){
       month = (month < 10 ? "0" : "") + month;
       var day  = date.getDate();
       day = (day < 10 ? "0" : "") + day;
+
+      var likes_names = [];
+      console.log(userData);
+      for( name in userData.likes){
+        likes_names.push( userData.likes[name].name);
+      }
+      console.log(likes_names);
+
       var newListing = new listingSchema({
         listingType: parseInt(userData.listingType),
         postedById: req.user.id,
@@ -205,6 +198,7 @@ app.post('/listing', ensureAuthenticated, function(req, res, next){
         catAllowed: ('on' === userData.catAllowed) ? true : false,
         dogAllowed: ('on' === userData.dogAllowed) ? true : false,
         smokingAllowed: ('on' === userData.smokingAllowed) ? true : false,
+        likes: likes_names,
       });
 
       newListing.save(
@@ -238,74 +232,24 @@ app.delete('/listing/:id', function(req, res, next){
   console.log(req.body);
   return res.json({success:true});
 });
-//create a listing
-function createListing(queryResponse, req, res, next, userData){
-  console.log(queryResponse);
-  console.log(userData);
-  var newListing = new listingSchema({
-    listingType: parseInt(userData.listingType),
-    postedBy: userData.postedBy,
-    postDate: userData.postDate,
-    availableFromDate: userData.availableFromDate,
-    availableToDate: userData.availableToDate,
-    addrLine: userData.addrLine,
-    addrAptNum: userData.addrAptNum,
-    addrCity: userData.addrCity,
-    addrZip : parseInt(userData.addrZip),
-    addrState: userData.addrState,
-    lat: parseInt(userData.lat),
-    lon: parseInt(userData.lon),
-    price: parseInt(userData.price),
-    bedrooms: parseInt(userData.bedrooms),
-    fullBathrooms: parseInt(userData.fullBathrooms),
-    halfBathrooms: parseInt(userData.halfBathrooms),
-    garbageInc: ('on' === userData.garbageInc) ? true : false,
-    heatInc: ('on' === userData.heatInc) ? true : false,
-    waterInc: ('on' === userData.waterInc) ? true : false,
-    electricInc: ('on' === userData.electricInc) ? true : false,
-    internetInc: ('on' === userData.internetInc) ? true : false,
-    squareFeet: parseInt(userData.squareFeet),
-    catAllowed: ('on' === userData.catAllowed) ? true : false,
-    dogAllowed: ('on' === userData.dogAllowed) ? true : false,
-    smokingAllowed: ('on' === userData.smokingAllowed) ? true : false,
-  });
-
-  newListing.save(
-    function(err){
-      if(err){
-        console.log('ERROR SAVING A LISTING');
-        return res.status(200).json({error: true, type: 'DATABASE'});
-      }
-    }
-  );
-
-  newListing.error = false;
-  return res.status(200).json(newListing);
-};
-
 
 /// *** facebook likes endpoint ***
+var url = 'https://graph.facebook.com/oauth/access_token?client_id=' + FacebookOptions.appId
+      + '&client_secret=' + FacebookOptions.appSecret + '&grant_type=client_credentials'
+      + '&redirect_uri=http://localhost:8000/';
 app.get('/likes/:userId', ensureAuthenticated, function( req, res, next){
-  console.log(req.params.userId);
-
-  var request = http.request( {
-    type: 'GET',
-    url: 'http://graph.facebook.com/' + req.params.userId + '/likes',
-  }, function(response){
-    var body = "";
-    response.on('data', function(){
-      body += data;
-    });
-    response.on('end', function(){
-      return res.json( JSON.parse(body) );
-    });
+  var AppTokenRequest = https.get( url, 
+    function(response){
+      var body = "";
+      response.on('data', function(data){
+        body += data;
+      });
+      response.on('end', function(){
+        return res.json(body);
+      });
+  }).on('error', function(error){
+    return res.json({error: true, type: "FACEBOOK"});
   });
-
-  request.on('error', function(){
-    return res.json( {error: true, type: 'FACEBOOK'});
-  })
-
-  request.end();
 });
 
 http.createServer(app).listen(app.get('port'), function(){

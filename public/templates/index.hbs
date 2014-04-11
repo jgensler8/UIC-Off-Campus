@@ -59,6 +59,26 @@
       <li><a href="http://foundation.zurb.com">BUILT WITH FOUNDATION</a></li>
     </ul>
   </div>
+
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '669442909769533',
+          status     : true,
+          xfbml      : true
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+  </script>
+
   <script src="public/bower_components/foundation/js/foundation.js"></script>
   <script src="public/bower_components/foundation/js/foundation/foundation.tooltip.js"></script>
   <script src="public/bower_components/foundation/js/foundation/foundation.offcanvas.js"></script>

@@ -84,5 +84,9 @@ exports.listing = mongoose.model('listing', new mongoose.Schema({
   squareFeet: Number,
   catAllowed: Boolean,
   dogAllowed: Boolean,
-  smokingAllowed: Boolean
+  smokingAllowed: Boolean,
+
+  likes: {
+     type: [String]
+  }
 }, {strict: true, collection: 'listings'}));

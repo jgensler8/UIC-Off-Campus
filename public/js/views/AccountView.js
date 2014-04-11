@@ -6,7 +6,7 @@ var AccountView = Backbone.View.extend({
   },
   events:{
     'change': this.attributesChanged,
-    'click [type="editReveal"]': 'editReveal',
+    'click [type="editReveal"]': this.editReveal,
     'click [type="editSubmit"]': 'editSubmit',
     'click [type="deleteReveal"]': 'deleteReveal',
     'click [type="deleteSubmit"]': 'deleteSubmit'
@@ -28,7 +28,7 @@ var AccountView = Backbone.View.extend({
     $.ajax({
       type: 'PUT',
       url: '/listing/' + event.target.id,
-      data: 'ASDFASDFASDFASTHEDATAWOULDGOHEREQEWRQWERQWRE',
+      data: '',
       success: function(){
         console.log("success edit");
       },
@@ -40,6 +40,7 @@ var AccountView = Backbone.View.extend({
   deleteReveal: function(event){
     $(document).foundation('reflow');
     $('#delete'+event.target.id).foundation('reveal','open');
+    $(document).foundation('reflow');
   },
   deleteSubmit: function(event){
     console.log(event);

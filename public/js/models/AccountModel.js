@@ -1,7 +1,7 @@
 var AccountModel = Backbone.Model.extend({
   urlRoot: 'account',
   initialize: function(){
-    _.bindAll(this, 'checkAuth');
+    _.bindAll(this, 'checkAuth', 'getLikes');
     this.fetch();
   },
   checkAuth: function(callback){
@@ -14,6 +14,11 @@ var AccountModel = Backbone.Model.extend({
       error: function(model, response, object){
         if('error' in callback) callback.error(model, response);
       }
+    });
+  },
+  getLikes: function(){
+    FB.api('/me/likes', 'get', function(response){
+      return(response);
     });
   }
 })

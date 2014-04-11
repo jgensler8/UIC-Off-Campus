@@ -196,7 +196,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"row\">\n  <div class=\"panel\">\n    <ul class=\"small-block-grid-1 medium-block-grid-3 large-block-grid-3 text-center\">\n      <li>Full Apartment, Rented: <img src=\"public/markers/red_MarkerA.png\"></li>\n      <li>Room, Short Term, Rented: <img src=\"public/markers/red_MarkerS.png\"></li>\n      <li>Room, Long Term, Rented: <img src=\"public/markers/red_MarkerL.png\"></li>\n    </ul>\n    <ul class=\"small-block-grid-1 medium-block-grid-3 large-block-grid-3 text-center\">\n      <li>Full Apartment, Wanted: <img src=\"public/markers/blue_MarkerA.png\"></li>\n      <li>Room, Short Term, Wanted: <img src=\"public/markers/blue_MarkerS.png\"></li>\n      <li>Room, Long Term, Wanted: <img src=\"public/markers/blue_MarkerL.png\"></li>\n    </ul>\n  </div>\n</div>\n\n<div class=\"off-canvas-wrap\" data-offcanvas>\n  <div class=\"inner-wrap\">\n    <nav class=\"tab-bar\">\n      <section class=\"left-small\">\n        <a class=\"left-off-canvas-toggle menu-icon\" ><span></span></a>\n      </section>\n\n      <section class=\"middle tab-bar-section\">\n        <a class=\"title button\" id=\"searchButton\">Search</a>\n      </section>\n\n      <section class=\"right-small\">\n        <a class=\"right-off-canvas-toggle menu-icon\" ><span></span></a>\n      </section>\n    </nav>\n\n    <aside class=\"left-off-canvas-menu\">\n      <ul class=\"off-canvas-list\">\n        <li><label>";
+  buffer += "<div class=\"row\">\n  <div class=\"panel\">\n    <ul class=\"small-block-grid-1 medium-block-grid-3 large-block-grid-3 text-center\">\n      <li>Full Apartment, To Rent: <img src=\"public/markers/red_MarkerA.png\"></li>\n      <li>Room, Short Term, To Rent: <img src=\"public/markers/red_MarkerS.png\"></li>\n      <li>Room, Long Term, To Rent: <img src=\"public/markers/red_MarkerL.png\"></li>\n    </ul>\n    <ul class=\"small-block-grid-1 medium-block-grid-3 large-block-grid-3 text-center\">\n      <li>Full Apartment, Wanted: <img src=\"public/markers/blue_MarkerA.png\"></li>\n      <li>Room, Short Term, Wanted: <img src=\"public/markers/blue_MarkerS.png\"></li>\n      <li>Room, Long Term, Wanted: <img src=\"public/markers/blue_MarkerL.png\"></li>\n    </ul>\n  </div>\n</div>\n\n<div class=\"off-canvas-wrap\" data-offcanvas>\n  <div class=\"inner-wrap\">\n    <nav class=\"tab-bar\">\n      <section class=\"left-small\">\n        <a class=\"left-off-canvas-toggle menu-icon\" ><span></span></a>\n      </section>\n\n      <section class=\"middle tab-bar-section\">\n        <a class=\"title button\" id=\"searchButton\">Search</a>\n      </section>\n\n      <section class=\"right-small\">\n        <a class=\"right-off-canvas-toggle menu-icon\" ><span></span></a>\n      </section>\n    </nav>\n\n    <aside class=\"left-off-canvas-menu\">\n      <ul class=\"off-canvas-list\">\n        <li><label>";
   if (helper = helpers.priceLabel) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.priceLabel); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -276,11 +276,20 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
 function program1(depth0,data) {
   
+  var buffer = "";
+  buffer += "\n            <li>"
+    + escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0))
+    + " asdf</li>\n          ";
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
   
   return "checked";
   }
 
-function program3(depth0,data) {
+function program5(depth0,data) {
   
   var buffer = "", stack1, helper;
   buffer += "\n<div id=\"";
@@ -295,7 +304,7 @@ function program3(depth0,data) {
   return buffer;
   }
 
-function program5(depth0,data) {
+function program7(depth0,data) {
   
   var buffer = "", stack1, helper;
   buffer += "\n<div id=\"";
@@ -310,7 +319,10 @@ function program5(depth0,data) {
   return buffer;
   }
 
-  buffer += "<div class=\"panel\">\n  <div class=\"row\">\n    <form id=\"listingForm\" class=\"small-12 large-4 columns\">\n      <fieldset>\n        <div class=\"row\">\n          <div class=\"small-12 large-12 columns\">\n            <label>I'm trying to:\n              <select name=\"listingType\">\n                <option value=\"1\">lease a whole apartment</option>\n                <option value=\"2\">sub lease a room, for the long term</option>\n                <option value=\"3\">sub lease a room, for the short term </option>\n                <option value=\"51\">find a whole apartment</option>\n                <option value=\"52\">find a room for the long term</option>\n                <option value=\"53\">find a room for the short term</option>\n              </select>\n            </label>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"small-6 large-6 columns\">\n            <span data-tooltip class=\"has-tip\" title=\"a yearly commitment\">Long term?</span>\n          </div>\n          <div class=\"small-6 large-6 columns\">\n            <span data-tooltip class=\"has-tip\" title=\"1 to 3 months or more\">Short term?</span>\n          </div>\n        </div>\n      </fieldset>\n    </form>\n    <form id=\"criteriaForm\" class=\"small-12 large-8 columns\">\n      <fieldset>\n        <div class=\"row\">\n          <div class=\"small-12 medium-6 large-6 columns\">\n            <label>Date available from<small> required</small>\n              <input name=\"availableFromDate\" type=\"date\" value=\"";
+  buffer += "<div class=\"panel\">\n  <div class=\"row\">\n    <form id=\"listingForm\" class=\"small-12 large-4 columns\">\n      <fieldset>\n        <div class=\"row\">\n          <div class=\"small-12 large-12 columns\">\n            <label>I'm trying to:\n              <select name=\"listingType\">\n                <option value=\"1\">lease a whole apartment</option>\n                <option value=\"2\">sub lease a room, for the long term</option>\n                <option value=\"3\">sub lease a room, for the short term </option>\n                <option value=\"51\">find a whole apartment</option>\n                <option value=\"52\">find a room for the long term</option>\n                <option value=\"53\">find a room for the short term</option>\n              </select>\n            </label>\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"small-6 large-6 columns\">\n            <span data-tooltip class=\"has-tip\" title=\"a yearly commitment\">Long term?</span>\n          </div>\n          <div class=\"small-6 large-6 columns\">\n            <span data-tooltip class=\"has-tip\" title=\"1 to 3 months or more\">Short term?</span>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <ul>\n          ";
+  stack1 = helpers.each.call(depth0, (depth0 && depth0.likes), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n          </ul>\n        </div>\n      </fieldset>\n    </form>\n    <form id=\"criteriaForm\" class=\"small-12 large-8 columns\">\n      <fieldset>\n        <div class=\"row\">\n          <div class=\"small-12 medium-6 large-6 columns\">\n            <label>Date available from<small> required</small>\n              <input name=\"availableFromDate\" type=\"date\" value=\"";
   if (helper = helpers.availableFromDate) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.availableFromDate); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -359,38 +371,38 @@ function program5(depth0,data) {
   else { helper = (depth0 && depth0.halfBathrooms); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + "\" placeholder=\"half\" required>\n            </label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Utilities Included<br>\n              <p>\n              <input name=\"heatInc\" type=\"checkbox\" ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.heatInc), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.heatInc), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "><label>Heat</label><br>\n              <input name=\"waterInc\" type=\"checkbox\" ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.waterInc), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.waterInc), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "><label>Water</label><br>\n              <input name=\"garbageInc\" type=\"checkbox\" ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.garbageInc), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.garbageInc), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "><label>Garbage</label><br>\n              <input name=\"electricInc\" type=\"checkbox\" ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.electricInc), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.electricInc), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "><label>Electricity</label><br>\n              <input name=\"internetInc\" type=\"checkbox\" ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.internetInc), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.internetInc), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "><label>Internet</label>\n              </p>\n            </label>\n          </div>\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Square Feet Of Apartment<br>\n              <input name=\"squareFeet\" type=\"number\" pattern=\"number\" value=\"";
   if (helper = helpers.squareFeet) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.squareFeet); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + "\"><br>\n            </label>\n            <input name=\"smokingAllowed\" type=\"checkbox\" ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.smokingAllowed), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.smokingAllowed), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "><label>Smoking Allowed</label><br>\n          </div>\n          <div class=\"small-12 medium-4 large-4 columns\">\n            <label>Pets Allowed<br>\n              <p>\n              <input name=\"dogAllowed.name\" type=\"checkbox\" ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.dogAllowed), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.dogAllowed), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "><label>Dogs Allowed</label><br>\n              <input name=\"catAllowed.name\" type=\"checkbox\" ";
-  stack1 = helpers['if'].call(depth0, (depth0 && depth0.catAllowed), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers['if'].call(depth0, (depth0 && depth0.catAllowed), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "><label>Cats Allowed</label>\n              </p>\n            </label>\n          </div>\n        </div>\n\n        <div class=\"row\">\n          <div class=\"small-12 medium-12 large-12 columns\">\n            <input class=\"button left\" type=\"submit\" name=\"submit\"/>\n          </div>\n        </div>\n      </fieldset>\n    </form>\n  </div>\n</div>\n\n";
-  stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.submitMessages)),stack1 == null || stack1 === false ? stack1 : stack1.error), {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.submitMessages)),stack1 == null || stack1 === false ? stack1 : stack1.error), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n\n";
-  stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.submitMessages)),stack1 == null || stack1 === false ? stack1 : stack1.success), {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
+  stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.submitMessages)),stack1 == null || stack1 === false ? stack1 : stack1.success), {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   return buffer;
   });
@@ -692,7 +704,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"row\">\n  <div class=\"panel\">\n    <div class=\"small-12 medium-12 large-12\">\n      <h3>Privacy Policy</h3>\n      <p>\n        <ul>\n          <li>Here at Social Living at UIC, we use session based tracking to validate our users. That means that you and only you will have access to your account and listings. We will never share your information with other companies.</li>\n          <li>We use your Facebook profile for two things: Login Credentials and your likes. This way, we will never jepordize your passwords as they will be maintained by Facebook. Your likes will be able to be seen by other users but ONLY if you have an apartment and are hosting a listing that needs to fill a room OR ANY listing where you are trying to find an apartment rather than a </li>\n          <li>Your profile picture will only be visible to you. This isn't entirely necessary for the function of the application, but we think that it provides a more unique user experience!</li>\n          <li>At Social Living at UIC, your privacy is important to us and if you feel that our services do not meet your level of privacy, we would love to know how to enrich our service</li>\n          <li>Any questions can be sent to: ";
+  buffer += "<div class=\"row\">\n  <div class=\"panel\">\n    <div class=\"small-12 medium-12 large-12\">\n      <h3>Privacy Policy</h3>\n      <p>\n        <ul>\n          <li>Here at Social Living at UIC, we use session based tracking to validate our users. That means that you and only you will have access to your account and listings. We will never share your information with other companies.</li>\n          <li>We use your Facebook profile for two things: login credentials and your likes. This way, we will never jeopardize your passwords as they will be maintained by Facebook. Your likes will be attached to your listing. As this application is in a pre-release state, we will work on having you select your top five Facebook likes.</li>\n          <li>Your profile picture will only be visible to you. This isn't entirely necessary for the function of the application, but we think that it provides a more unique user experience!</li>\n          <li>At Social Living at UIC, your privacy is important to us and if you feel that our services do not meet your level of privacy, we would love to know how to enrich our service.</li>\n          <li>Any questions can be sent to: ";
   if (helper = helpers.contactEmail) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.contactEmail); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -739,17 +751,19 @@ function program1(depth0,data) {
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.price)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "</li>\n      <li class=\"bullet-item\">"
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.postedByName)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + " is interested in:</li>\n\n      ";
-  stack1 = helpers.each.call(depth0, (depth0 && depth0.likes), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
+    + " is interested in:</li>\n      <li>"
+    + escapeExpression(((stack1 = (depth0 && depth0.likes)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + "</li>\n\n      ";
+  stack1 = helpers.each.call(depth0, ((stack1 = (depth0 && depth0.attributes)),stack1 == null || stack1 === false ? stack1 : stack1.likes), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n\n      <li class=\"cta-button\"><a class=\"button\" href=\"#\">Contact</a></li>\n    </ul>\n  </div>\n";
   return buffer;
   }
 function program2(depth0,data) {
   
-  var buffer = "", stack1;
+  var buffer = "";
   buffer += "\n        <li class=\"bullet-item\">"
-    + escapeExpression(((stack1 = (depth0 && depth0.name)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
+    + escapeExpression((typeof depth0 === functionType ? depth0.apply(depth0) : depth0))
     + "</li>\n      ";
   return buffer;
   }

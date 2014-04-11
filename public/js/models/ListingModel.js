@@ -42,22 +42,10 @@ var ListingModel = Backbone.Model.extend({
       ]
   },
   initialize: function(){
-    _.bindAll(this, 'emitMarkerClick', 'fetchUserData');
+    _.bindAll(this, 'emitMarkerClick');
   },
   emitMarkerClick: function(){
-    console.log("clicked");
-    //var infoWindow = new google.maps.InfoWindow({ content: this.get('price').toString()});
-    //infoWindow.open( this.get('marker').map, this.get('marker'));
+    //console.log("clicked");
     this.trigger('markerClicked', this);
-  },
-  fetchUserData: function(){
-    this.fetch({
-      url: 'listing/userdata'
-    },
-    {
-      success: function(model, response, options){
-        this.set(clickData, model);
-      }
-    })
   }
 })
