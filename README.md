@@ -1,7 +1,7 @@
 UIC-Off-Campus
 ==============
 
-New UIC off campus housing website.
+New UIC off campus housing website. [Can be viewed here](http://jgensl2.people.uic.edu/housing/)
 
 #How to run#
 Create back end deps (assuming you have npm):
